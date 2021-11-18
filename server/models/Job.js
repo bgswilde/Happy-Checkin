@@ -16,11 +16,11 @@ const jobSchema = new Schema(
         type: Date
     }, 
 
-    package: [Package],
+    package: Package,
 
-    customer: [User],
+    customer: User,
 
-    checker: [User],
+    checker: User,
 
     feedback: FeedbackSchema,
 
