@@ -23,6 +23,38 @@ const resolvers = {
 
       return { token, user };
     },
+    addJob: async (parent, args, context) => {
+      if (context.user) {
+        const job = await Job.create(args);
+        return job;
+      }
+
+      throw new AuthenticationError('You need to be logged in!');
+    },
+    updateJob: async (parent, args, context) => {
+      if (context.user) {
+
+        const job = await Job.findByIdAndUpdate(
+          { _id: args._id }, // not sure about this
+          { args }, // not sure about this
+          { new: true }
+        );
+
+        return job;
+      }
+
+      throw new AuthenticationError('You need to be logged in!');
+    },
+    removeJob: async (parent, args, context) => {
+      if (context.user) {
+        
+        const job = Job.findByIdAandRemove(args); // not sure about this
+
+        return job;
+      }
+
+      throw new AuthenticationError('You need to be logged in!');
+    }
   }
 };
 
