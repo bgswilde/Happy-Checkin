@@ -1,2 +1,2 @@
-# Stay-Happy
-Stay Happy is a hotel room management application for use by a hotel or B&amp;B. A customer can then use Stay Happy to search and book a room that fits their needs for a happy stay. 
+# Happy Checkin
+Happy Checkin is a service that takes the inconveniences out of the hotel check-in experience while offering add-ons that enhance the hotel arrival experience. No more sad check-ins! 
