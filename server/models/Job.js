@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose');
 const User = require('./User');
+const FeedbackSchema = require('./Feedback')
 
 const jobSchema = new Schema(
   {
@@ -13,11 +14,14 @@ const jobSchema = new Schema(
     completedAt: {
         type: Date
     }, 
-    package: [], // packageSchema here when file is created
-    customer: [User], //user
-    checker: [User], //user
-    feedback: [], //feedbackSchema here when file is created
-    checkIn: {}, // deadline of job completion
+    package: [], // Package here when file is created
+    customer: User,
+    checker: User,
+    feedback: FeedbackSchema,
+    // deadline of job completion
+    checkIn: {
+        type: Date
+    },
     instructions: {
         type: String,
         minlength: 1
@@ -32,11 +36,11 @@ const jobSchema = new Schema(
 
 jobSchema.virtual('status').get(function() {
     if (!this.claimedAt && !this.completedAt) {
-        return 'Available'
+        return 'unclaimed'
     } else if (!this.completedAt) {
-        return 'Claimed'
+        return 'claimed'
     } else {
-        return 'Completed'
+        return 'completed'
     }
 })
 
