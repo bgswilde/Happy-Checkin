@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const { Schema } = require('mongoose');
 
 const PackageSchema = new Schema({
     title: {
@@ -17,6 +17,5 @@ const PackageSchema = new Schema({
     }
 })
 
-const Package = model('Package', PackageSchema);
 
-module.exports = Package;
+module.exports = PackageSchema;

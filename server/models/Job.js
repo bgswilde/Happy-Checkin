@@ -1,9 +1,8 @@
 const { Schema, model } = require('mongoose');
-const User = require('./User');
-const Package = require('./Package');
 const FeedbackSchema = require('./Feedback')
+const PackageSchema = require('./Package')
 
-const jobSchema = new Schema(
+const JobSchema = new Schema(
   {
     createdAt: {
         type: Date,
@@ -16,11 +15,17 @@ const jobSchema = new Schema(
         type: Date
     }, 
 
-    package: [],
+    package: PackageSchema,
 
-    customer: [],
+    customer: {
+        type: String,
+        ref: 'User'
+    },
 
-    checker: [],
+    checker: {
+        type: String,
+        ref: 'User'
+    },
 
     feedback: FeedbackSchema,
 
@@ -40,9 +45,9 @@ const jobSchema = new Schema(
   }
 );
 
-jobSchema.virtual('status').get(function() {
+JobSchema.virtual('status').get(function() {
     if (!this.claimedAt && !this.completedAt) {
-        return 'unclaimed'
+        return ''
     } else if (!this.completedAt) {
         return 'claimed'
     } else {
@@ -50,7 +55,4 @@ jobSchema.virtual('status').get(function() {
     }
 })
 
-
-const Job = model('Job', jobSchema);
-
-module.exports = Job;
+module.exports = JobSchema;
