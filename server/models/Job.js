@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose');
 const User = require('./User');
+const Package = require('./Package');
 const FeedbackSchema = require('./Feedback')
 
 const jobSchema = new Schema(
@@ -14,10 +15,15 @@ const jobSchema = new Schema(
     completedAt: {
         type: Date
     }, 
-    package: [], // Package here when file is created
-    customer: User,
-    checker: User,
+
+    package: [Package],
+
+    customer: [User],
+
+    checker: [User],
+
     feedback: FeedbackSchema,
+
     // deadline of job completion
     checkIn: {
         type: Date
