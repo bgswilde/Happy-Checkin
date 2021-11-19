@@ -32,6 +32,43 @@ const resolvers = {
 
       return { token, user };
     },
+
+    login: async (parent, { phoneNumber, password }) => {
+      const user = await User.findOne({ phoneNumber });
+
+      if(!user) {
+        throw new AuthenticationError('No user associated with this phone number');
+      }
+
+      const correctPw = await user.isCorrectPassword(password);
+
+      if (!correctPw) {
+        throw new AuthenticationError('Incorrect password')
+      }
+
+      return user;
+    },
+    updateUser: async (parent, args, context) => {
+      if (context.user) {
+        const user = await User.findByIdAndUpdate(
+          { _id: args._id },
+          { args },
+          {new: true }
+        )
+      }
+    },
+    removeUser: async (parent, args, context) => {
+      if (context.user) {
+
+        const user = await User.findByIdAndRemove(
+          { _id: args._id } 
+        );
+
+        return user
+      }
+
+      throw new AuthenticationError('You need to be logged in!')
+    },
     addJob: async (parent, args, context) => {
       if (context.user) {
         const job = await Job.create(args);

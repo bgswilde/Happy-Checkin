@@ -35,7 +35,9 @@ const typeDefs = gql`
   }
 
   type Mutation {
+    login(phoneNumber: String!, password: String!): User
     addUser(role: Int!, phoneNumber: String!, firstName: String!, lastName: String!, password: String!): Auth
+    
   }
 
 `;
