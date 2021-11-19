@@ -55,4 +55,6 @@ JobSchema.virtual('status').get(function() {
     }
 })
 
-module.exports = JobSchema;
+const Job = model('Job', JobSchema)
+
+module.exports = Job;

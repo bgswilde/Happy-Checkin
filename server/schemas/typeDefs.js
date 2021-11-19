@@ -10,6 +10,19 @@ const typeDefs = gql`
     displayName: String
   }
 
+  type Job {
+    _id: ID
+    createdAt: Date
+    claimedAt: Date
+    completedAt: Date
+    package: Package
+    customer: String
+    checker: String
+    feedback: FeedbackSchema
+    checkIn: Date
+    instructions: String
+  }
+
   type Auth {
     token: ID!
     user: User
@@ -17,6 +30,8 @@ const typeDefs = gql`
 
   type Query {
     me: User
+    user: [User]
+    users: User
   }
 
   type Mutation {

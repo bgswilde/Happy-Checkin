@@ -13,6 +13,15 @@ const resolvers = {
       }
 
       throw new AuthenticationError('Not logged in');
+    },
+    users: async () => {
+      return User.find()
+        .select('-__v -password')
+    },
+
+    user: async (parent, { phoneNumber }) => {
+      return User.findOne({ phoneNumber })
+        .select('-__v -password')
     }
   },
 
