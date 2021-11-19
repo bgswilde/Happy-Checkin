@@ -1,0 +1,35 @@
+.log-container {
+    margin-top: 20vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width:fit-content;
+    background-image: linear-gradient(to bottom right, rgb(255,117,143,1), rgb(255,143,163));
+    border-radius: 8px;
+    box-shadow: 8px 12px rgb(89,13,34,0.6);
+}
+
+.form-card {
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+.signup-link {
+    text-decoration: none;
+    margin-bottom: 2rem;
+    width: fit-content;
+    justify-content: center;
+    height: fit-content;
+    align-self: center;
+    color: rgb(246,189,96);
+}
+
+Button {
+    color: rgb(1,79,134)
+}
+
+.submit-btn:hover {
+    box-shadow: 2px 2px #1d1919a1;
+}

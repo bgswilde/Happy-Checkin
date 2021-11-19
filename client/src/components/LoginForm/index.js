@@ -1,12 +1,13 @@
 import React from 'react';
 import { Container, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import './index.css';
 
 function LoginForm () {
 
 
   return(
-    <Container>
+    <Container className="log-container">
       <div className="form-card">
         <Form>
           <FormGroup>
@@ -17,7 +18,7 @@ function LoginForm () {
             <Label for="password">Password</Label>
             <Input type="password" name="password" id="loginPassword" />
           </FormGroup>
-          <Button className="submit-btn">Login</Button>
+          <Button color="info" className="submit-btn">Login</Button>
         </Form>
       </div>
       <p>Need an account?</p>
