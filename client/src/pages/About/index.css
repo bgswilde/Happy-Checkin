@@ -1,0 +1,30 @@
+.desc-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 4rem;
+    background-color: rgb(255, 214, 165);
+    height: 200px;
+    border-radius: 8px;
+    box-shadow: 8px 12px rgb(89,13,34,0.6);
+}
+
+.cust-client {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: nowrap;
+    margin-top: 4rem;
+}
+
+h1, p {
+    color: black;
+}
+
+.cust-description, .client-description {
+    background-color: rgb(255, 214, 165);
+    height: 200px;
+    border-radius: 8px;
+    box-shadow: 8px 12px rgb(89,13,34,0.6);
+}
