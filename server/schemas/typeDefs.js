@@ -12,15 +12,39 @@ const typeDefs = gql`
 
   type Job {
     _id: ID
-    createdAt: Date
-    claimedAt: Date
-    completedAt: Date
-    package: Package
-    customer: String
-    checker: String
-    feedback: FeedbackSchema
-    checkIn: Date
+    createdAt: String
+    claimedAt: String
+    completedAt: String
+    checkIn: String
     instructions: String
+    customer: [User]
+    checker: [User]
+    package: [Package]
+    hotel: [Hotel]
+    feedback: [Feedback]
+  }
+
+  type Package {
+    _id: ID
+    title: String
+    imageUrl: String
+    cost: Int
+    description: String
+  }
+
+  type Hotel {
+    _id: ID
+    street1: String
+    street2: String
+    city: String
+    state: String
+    zip: Int
+  }
+
+  type Feedback {
+    _id: ID
+    rating: Int
+    body: String
   }
 
   type Auth {

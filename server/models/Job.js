@@ -9,7 +9,7 @@ const JobSchema = new Schema(
     createdAt: {
         type: Date,
         default: Date.now,
-        get: timestamp => dateFormat(timestamp);
+        get: timestamp => dateFormat(timestamp)
     },
     claimedAt: {
         type: Date
@@ -18,13 +18,15 @@ const JobSchema = new Schema(
         type: Date
     },
     customer: {
-        type: String,
+        type: Schema.Types.ObjectId,
         ref: 'User'
     },
     checker: {
-        type: String,
+        type: Schema.Types.ObjectId,
         ref: 'User'
     },
+    package: [PackageSchema],
+    hotel: [HotelSchema],
     feedback: [FeedbackSchema],
 
     checkIn: {
