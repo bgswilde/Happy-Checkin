@@ -10,6 +10,6 @@ const FeedbackSchema = new Schema({
         minlength: 1,
         maxlength: 300
     }
-})
+});
 
 module.exports = FeedbackSchema;
