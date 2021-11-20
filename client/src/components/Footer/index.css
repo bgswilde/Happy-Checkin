@@ -1,6 +1,5 @@
 .footer {
   background-color: var(--primary-red);
-  color: white;
   opacity: 85%;
   /* height: 80px; */
   width: 100%;
@@ -13,4 +12,5 @@
 
 .footer p {
   margin: 5px;
+  color: white;
 }

@@ -10,7 +10,7 @@ function Header() {
       className="text-light"
     >
       <Container>
-        <Navbar.Brand>
+        <Navbar.Brand href="../">
           <img
             src="./assets/images/hc4.png"
             width="140"
@@ -25,8 +25,8 @@ function Header() {
             <Nav.Link href="/login" color="light">Log In</Nav.Link>
             <Nav.Link href="/signup">Sign Up</Nav.Link>
             {/* To be rendered if logged in */}
-            <Nav.Link >Reservations</Nav.Link>
-            <Nav.Link >Logout</Nav.Link>
+            <Nav.Link href="/reservation">Reservations</Nav.Link>
+            {/* <Nav.Link onClick={logout}>Logout</Nav.Link> */}
           </Nav>
         </Navbar.Collapse>
       </Container>
