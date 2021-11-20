@@ -54,14 +54,14 @@ const typeDefs = gql`
 
   type Query {
     me: User
-    user: [User]
-    users: User
+    user(phoneNumber: String!): User
+    users: [User]
   }
 
   type Mutation {
     login(phoneNumber: String!, password: String!): Auth
     addUser(role: Int!, phoneNumber: String!, firstName: String!, lastName: String!, password: String!): Auth
-    updateUser(userId: ID!, role: Int!, phoneNumber: String!, firstName: String!, lastName: String!, password: String!): Auth
+    updateUser(_id: ID!, role: Int!, phoneNumber: String!, firstName: String!, lastName: String!, password: String!): Auth
     removeUser(userId: ID!): User
     addJob(checkIn: String!, confirmationKey: String!): Job
     updateJob(jobId: ID!): Job
