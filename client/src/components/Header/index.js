@@ -12,9 +12,8 @@ function Header() {
       <Container>
         <Navbar.Brand>
           <img
-            src="./assets/images/hc2.png"
-            width="60"
-            height="60"
+            src="./assets/images/hc4.png"
+            width="140"
             className="d-inline-block align-top"
             alt="Happy Checkin Logo"
           />
