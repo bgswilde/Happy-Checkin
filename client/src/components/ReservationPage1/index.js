@@ -53,7 +53,7 @@ function ReservationPage1(props) {
                   <li>Special Requests handled and ready</li>
                   <li>Complimentary Happy Checkin Sleep Mask</li>
                 </ul>
-                <Button className="next-btn" onClick={() => handleChoice(1)}>Choose This Package</Button>
+                <Button className="choice-btn choice-1" onClick={() => handleChoice(1)}>Choose This Package</Button>
               </Col>
             </Row>
           </ListGroupItem>
@@ -71,6 +71,7 @@ function ReservationPage1(props) {
                   <li>A basket of assorted candy</li>
                   <li><em>no cheap off-brand candy...</em></li>
                 </ul>
+                <Button className="choice-btn choice-2" onClick={() => handleChoice(2)}>Choose This Package</Button>
               </Col>
             </Row>
           </ListGroupItem>
@@ -88,6 +89,7 @@ function ReservationPage1(props) {
                   <li>High-quality meats, cheeses, and other essentials</li>
                   <li>Platter/Board for display</li>
                 </ul>
+                <Button className="choice-btn choice-3" onClick={() => handleChoice(3)}>Choose This Package</Button>
               </Col>
             </Row>
           </ListGroupItem>
@@ -107,6 +109,7 @@ function ReservationPage1(props) {
                   <li>Champagne and Chocolates</li>
                   <li>Luxurious Bubble Bath</li>
                 </ul>
+                <Button className="choice-btn choice-4" onClick={() => handleChoice(4)}>Choose This Package</Button>
               </Col>
             </Row>
           </ListGroupItem>

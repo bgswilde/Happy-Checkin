@@ -16,11 +16,6 @@
   background-color: #e6e6e6;
 }
 
-.item:hover {
-  border: 3px solid;
-  border-color: var(--primary-red);
-}
-
 .selected {
   border: 3px solid;
   border-color: var(--secondary-yellow);
@@ -34,4 +29,35 @@
   font-weight: 600;
   font-style: oblique;
   color: var(--accent-orange);
+}
+
+.choice-btn {
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  background-color: var(--primary-red);
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  border-color: var(--base-grey);
+}
+
+.choice-btn:hover {
+  background-color: var(--primary-red);
+}
+
+.choice-1:hover {
+  box-shadow: 0 0 7px 1px rgba(0, 0, 0, 0.7);
+}
+
+.choice-2:hover {
+  box-shadow: 0 0 7px 1px rgba(255, 226, 6, 0.783);
+}
+
+.choice-3:hover {
+  box-shadow: 0 0 7px 1px rgba(255, 111, 49, 0.7);
+}
+
+.choice-4:hover {
+  box-shadow: 0 0 7px 1px rgba(255, 0, 0, 0.7);
 }
