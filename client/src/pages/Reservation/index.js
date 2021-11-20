@@ -7,11 +7,7 @@ import ReservationPage3 from '../../components/ReservationPage3';
 
 function Reservation() {
   const [page, setPage] = useState(1);
-  const [reservationData, setReservationData] = useState({
-    package: {},
-    options: {},
-    details: {}
-  });
+  const [reservationData, setReservationData] = useState({});
 
   function nextPage() {
     if (page === 3) return;
@@ -21,7 +17,7 @@ function Reservation() {
   function goBack() {
     setPage(1);
   }
-
+  
   function updateData(type, newData) {
     setReservationData((reservationData) => {
       return { ...reservationData, [type]: newData };
