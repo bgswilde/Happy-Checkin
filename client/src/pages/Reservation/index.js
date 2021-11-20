@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Button } from 'react-bootstrap';
+import './index.css'
+import { Container, Button, Row, Col, ProgressBar } from 'react-bootstrap';
 import ReservationPage1 from '../../components/ReservationPage1';
 import ReservationPage2 from '../../components/ReservationPage2';
 import ReservationPage3 from '../../components/ReservationPage3';
@@ -33,8 +34,13 @@ function Reservation() {
         {page === 1 && <ReservationPage1 />}
         {page === 2 && <ReservationPage2 />}
         {page === 3 && <ReservationPage3 />}
-      
-        {page !== 3 && <Button onClick={nextPage}>Next</Button>}
+
+        <Row className="justify-content-center">
+          <Col sm="5" >
+            <ProgressBar class="progress" striped variant="warning" max="4" now={page} />
+          </Col>
+        </Row>
+        {page !== 3 && <Button className="next-btn" onClick={nextPage}>Next</Button>}
         {/* <Button type="submit" onClick={submit}>Looks Great!</Button> */}
         {page === 3 && <Button onClick={goBack}>Go Back</Button>} 
     </Container> 

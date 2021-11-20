@@ -1,0 +1,37 @@
+.form-block {
+  background-color: white;
+  margin: 5px auto;
+  padding: 15px;
+  border: solid 2px var(--alt-base-grey);
+  border-radius: 8px;
+  box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.5);
+}
+
+.item {
+  margin: 0;
+  border-radius: 5px;
+}
+
+.odd {
+  background-color: #e6e6e6;
+}
+
+.item:hover {
+  border: 3px solid;
+  border-color: var(--primary-red);
+}
+
+.selected {
+  border: 3px solid;
+  border-color: var(--secondary-yellow);
+}
+
+.description{
+  text-align: left;
+}
+
+.price {
+  font-weight: 600;
+  font-style: oblique;
+  color: var(--accent-orange);
+}
