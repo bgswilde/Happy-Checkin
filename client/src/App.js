@@ -39,17 +39,6 @@ function App() {
     <ApolloProvider client={client}>
       <div className="app">
         <Router>
-<<<<<<< HEAD
-          <Switch>
-            <Route exact path="/" component={LoginForm} />
-            <Route exact path="/signup" component={SignupForm} />
-            <Route exact path="/about" component={About} />
-          </Switch>
-        </Router>
-      </div>
-      <Footer />
-      </div> 
-=======
           <Header />
             <div className="content-wrap">  
               <Switch>
@@ -59,14 +48,13 @@ function App() {
                 <Route exact path="/customer/:phoneNumber" component={CustomerDashboard} />
                 <Route exact path="/checker/:phoneNumber" component={CheckerDashboard} />
                 <Route exact path="/reservation" component={Reservation} />
-                {/* <Route exact path="/about" component={About} /> */}
+                <Route exact path="/about" component={About} />
               </Switch>
             </div>
           <Footer />
         </Router>
       </div>
     </ApolloProvider>
->>>>>>> feature/reservation-form
   )
 }
 
