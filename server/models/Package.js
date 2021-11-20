@@ -6,14 +6,16 @@ const PackageSchema = new Schema({
         required: true,
         minlength: 1
     },
-    description: {
-        type: String,
-        required: true,
-        minlength: 1
-    },
-    detail: {
+    imageUrl: {
         type: String,
         required: true
+    },
+    cost: {
+        type: Number,
+        required: true
+    },
+    description: {
+        type: String
     }
 })
 
