@@ -8,7 +8,7 @@ import LoginForm from './components/LoginForm';
 import SignupForm from './components/SignupForm';
 import CustomerDashboard from './pages/CustomerDashboard';
 import CheckerDashboard from './pages/CheckerDashboard';
-import Reservation from './pages/Reservation';
+import Reservation from './pages/AddReservation';
 // import About from './components/About';
 
 
