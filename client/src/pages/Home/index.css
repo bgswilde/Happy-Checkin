@@ -1,3 +1,16 @@
 .main-logo {
-  margin: 0 auto;
+  margin: 20px auto 30px auto;
+}
+
+.home-start-btn {
+  background-color: var(--primary-red);
+  font-size: 20px;
+  font-weight: 500;
+  border: none;
+  border-color: var(--base-grey);
+}
+
+.home-start-btn:hover {
+  box-shadow: 0 0 7px 1px rgba(0, 0, 0, 0.7);
+  background-color: var(--primary-red);
 }
