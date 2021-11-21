@@ -56,6 +56,7 @@ const typeDefs = gql`
     me: User
     user(phoneNumber: String!): User
     users: [User]
+    jobs: [Job]
   }
 
   type Mutation {
@@ -63,10 +64,10 @@ const typeDefs = gql`
 
     addUser(role: Int!, phoneNumber: String!, firstName: String!, lastName: String!, password: String!): User
     updateUser(role: Int, phoneNumber: String, firstName: String, lastName: String, password: String): User
-    removeUser(): User
+    removeUser(userId: ID): User
     
     addJob(checkIn: String!, confirmationKey: String!): Job
-    updateJob(jobId: ID!): Job
+    updateJob(jobId: ID!, checkIn: String!): Job
     removeJob(jobId: ID!): Job
     
   }

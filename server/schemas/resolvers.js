@@ -22,6 +22,9 @@ const resolvers = {
     user: async (parent, { phoneNumber }) => { // successful
       return User.findOne({ phoneNumber })
         .select('-__v -password')
+    },
+    jobs: async () => {
+      return Job.find()
     }
   },
 
@@ -75,21 +78,20 @@ const resolvers = {
 
       throw new AuthenticationError('You need to be logged in!')
     },
-    addJob: async (parent, args, context) => {
+    addJob: async (parent, args, context) => { // tested successfully -BK
       if (context.user) {
-        const job = await Job.create(args);
-        return job;
+        const job = await Job.create({...args, customer: context.user})
+        const updatedJob = Job.findOne( { _id: job.id }).populate('customer');
+        return updatedJob;
       }
 
       throw new AuthenticationError('You need to be logged in!');
     },
-    updateJob: async (parent, args, context) => {
+    updateJob: async (parent, args, context) => { // tested successfully -BK
       if (context.user) {
 
-        const job = await Job.findByIdAndUpdate(
-          { _id: args._id }, // not sure about this
-          { args }, // not sure about this
-          { new: true }
+        const job = await Job.findOneAndUpdate(
+          { jobId: args.jobId, ...args }
         );
 
         return job;
@@ -97,10 +99,10 @@ const resolvers = {
 
       throw new AuthenticationError('You need to be logged in!');
     },
-    removeJob: async (parent, args, context) => {
+    removeJob: async (parent, args, context) => { // tested successfully -BK
       if (context.user) {
         
-        const job = Job.findByIdAandRemove(args); // not sure about this
+        const job = Job.findOneAndRemove({ _id: args.jobId });
 
         return job;
       }
