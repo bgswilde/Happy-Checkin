@@ -6,7 +6,7 @@ import ReservationPage2 from '../../components/ReservationPage2';
 import ReservationPage3 from '../../components/ReservationPage3';
 
 
-function Reservation() {
+function AddReservation() {
   const [page, setPage] = useState(1);
   
   const [userData, setUserData] = useState({

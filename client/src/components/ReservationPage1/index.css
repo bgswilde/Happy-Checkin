@@ -29,8 +29,6 @@
   font-weight: 600;
   font-style: oblique;
   color: var(--accent-orange);
-<<<<<<< HEAD
-=======
 }
 
 .choice-btn {
@@ -66,5 +64,4 @@
 
 .choice-4:hover, .choice-4:focus{
   box-shadow: 0 0 7px 1px rgba(255, 0, 0, 0.7);
->>>>>>> feature/reservation-form
 }
