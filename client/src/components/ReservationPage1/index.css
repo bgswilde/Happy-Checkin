@@ -16,17 +16,12 @@
   background-color: #e6e6e6;
 }
 
-.item:hover {
-  border: 3px solid;
-  border-color: var(--primary-red);
-}
-
 .selected {
   border: 3px solid;
   border-color: var(--secondary-yellow);
 }
 
-.description{
+.description {
   text-align: left;
 }
 
@@ -34,4 +29,42 @@
   font-weight: 600;
   font-style: oblique;
   color: var(--accent-orange);
+<<<<<<< HEAD
+=======
+}
+
+.choice-btn {
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  background-color: var(--primary-red);
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  border-color: var(--base-grey);
+}
+
+.choice-btn:hover {
+  background-color: var(--primary-red);
+}
+
+.choice-btn:focus {
+  background-color: var(--primary-red);
+}
+
+.choice-1:hover, .choice-1:focus {
+  box-shadow: 0 0 7px 1px rgba(0, 0, 0, 0.7);
+}
+
+.choice-2:hover, .choice-2:focus {
+  box-shadow: 0 0 7px 1px rgba(255, 226, 6, 0.883);
+}
+
+.choice-3:hover, .choice-3:focus {
+  box-shadow: 0 0 7px 1px rgba(255, 111, 49, 0.8);
+}
+
+.choice-4:hover, .choice-4:focus{
+  box-shadow: 0 0 7px 1px rgba(255, 0, 0, 0.7);
+>>>>>>> feature/reservation-form
 }
