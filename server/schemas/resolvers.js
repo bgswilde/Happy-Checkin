@@ -49,26 +49,25 @@ const resolvers = {
       return { token, user };
     },
 
-    // as with the job resolvers, this syntax did not work for me (refering to the update and remove mutations).
-    // The updateUser mutation went through without errors, but it returned a null user and didnt update anything.
-    // I havent tested the remove user or remove job but I would assume it is the same case on those
-    // Shall do further testing when I return this afternoon
-    // -BK
-    updateUser: async (parent, args, context) => { 
+    
+    updateUser: async (parent, args, context) => { // tested successfully -BK
       if (context.user) {
-        const user = await User.findByIdAndUpdate(
-          { userId: context.user._id }, 
+        const user = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { firstName: args.firstName,
+          lastName: args.lastName,
+          phoneNumber: args.phoneNumber,
+          },
           { new: true }
         )
-
         return user
       }
     },
     removeUser: async (parent, args, context) => { // tested successfully -BK
       if (context.user) {
 
-        const user = await User.findByIdAndRemove(
-          { _id: args.userId } 
+        const user = await User.findOneAndRemove(
+          { _id: context.user._id } 
         );
 
         return user
