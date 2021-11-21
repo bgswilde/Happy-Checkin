@@ -57,17 +57,18 @@ const resolvers = {
     updateUser: async (parent, args, context) => { 
       if (context.user) {
         const user = await User.findByIdAndUpdate(
-          { _id: args._id }, 
-          { args },
-          {new: true }
+          { userId: context.user._id }, 
+          { new: true }
         )
+
+        return user
       }
     },
-    removeUser: async (parent, args, context) => {
+    removeUser: async (parent, args, context) => { // tested successfully -BK
       if (context.user) {
 
         const user = await User.findByIdAndRemove(
-          { _id: args._id } 
+          { _id: args.userId } 
         );
 
         return user

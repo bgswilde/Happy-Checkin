@@ -64,8 +64,8 @@ const typeDefs = gql`
     updateUser(_id: ID!, role: Int!, phoneNumber: String!, firstName: String!, lastName: String!, password: String!): Auth
     removeUser(userId: ID!): User
     addJob(checkIn: String!, confirmationKey: String!): Job
-    updateJob(jobId: ID!): Job
-    removeJob(jobId: ID!): Job
+    updateJob(_id: ID!): Job
+    removeJob(_id: ID!): Job
     
   }
 
