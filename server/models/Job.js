@@ -2,7 +2,6 @@ const { Schema, model, Types } = require('mongoose');
 const FeedbackSchema = require('./Feedback');
 const PackageSchema = require('./Package');
 const HotelSchema = require('./Hotel');
-const userSchema = require('./User')
 const { dateFormater } = require('../utils/dateFormat');
 
 const JobSchema = new Schema(
@@ -24,10 +23,10 @@ const JobSchema = new Schema(
         type: Schema.Types.ObjectId,
         ref: 'User'
     }],
-    checker: [{
+    checker: {
         type: Schema.Types.ObjectId,
         ref: 'User'
-    }],
+    },
     package: [PackageSchema],
     hotel: [HotelSchema],
     feedback: [FeedbackSchema],

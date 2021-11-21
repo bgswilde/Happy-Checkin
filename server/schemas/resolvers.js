@@ -81,7 +81,11 @@ const resolvers = {
     addJob: async (parent, args, context) => { // tested successfully -BK
       if (context.user) {
         const job = await Job.create({...args, customer: context.user})
-        const updatedJob = Job.findOne( { _id: job.id }).populate('customer');
+        const updatedJob = Job.findOneAndUpdate( { _id: job.id },
+          { $push: { hotel: { name: args.hotelName, street1: args.street1, street2: args.street2, city: args.city, state: args.state, zip: args.zip }}})
+          .populate('customer')
+          .populate('hotel');
+          
         return updatedJob;
       }
 
