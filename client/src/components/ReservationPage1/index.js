@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './index.css'
 import { 
   Row, 
@@ -11,13 +11,7 @@ import {
 } from 'react-bootstrap';
 
 function ReservationPage1(props) {
-  const {
-    setPackageData,
-    packageData,
-    nextPage,
-    setPage,
-    page
-  } = props; 
+  const { setPackageData, nextPage } = props; 
 
   function handleChoice(selection) {
     console.log(`I clicked the button to select option ${selection}`);
@@ -26,7 +20,8 @@ function ReservationPage1(props) {
     setPackageData({
       name: selection,
       price: selection
-    })
+    });
+    nextPage();
   }
 
   return (

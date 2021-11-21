@@ -56,32 +56,26 @@ function Reservation() {
     <Container>
       <Row className="justify-content-center">
         <Col sm="5" >
-          <ProgressBar class="progress" striped variant="warning" max="4" now={page} />
+          <ProgressBar class="progress" striped variant="warning" max="4" now={page} label={`STEP  ${page}`} />
         </Col>
       </Row>
         {page === 1 && 
           <ReservationPage1 
             setPackageData={setPackageData}
-            packageData={packageData}
             nextPage={nextPage}
-            setPage={setPage}
-            page={page}
           />
         }
         {page === 2 && 
           <ReservationPage2 
             setHotelData={setHotelData}
-            hotelData={hotelData}
             nextPage={nextPage}
-            setPage={setPage}
-            page={page}
           />
         }
         {page === 3 && <ReservationPage3 />}
 
-        {page !== 3 && <Button className="next-btn" onClick={nextPage}>Next</Button>}
+        {/* {page !== 3 && <Button className="next-btn" onClick={nextPage}>Next</Button>} */}
         {/* <Button type="submit" onClick={submit}>Looks Great!</Button> */}
-        {page === 3 && <Button onClick={goBack}>Go Back</Button>} 
+        {page === 2 && <Button className="next-btn" onClick={goBack}>Go Back</Button>} 
     </Container> 
   )
 }
