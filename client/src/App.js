@@ -9,7 +9,7 @@ import SignupForm from './components/SignupForm';
 import CustomerDashboard from './pages/CustomerDashboard';
 import CheckerDashboard from './pages/CheckerDashboard';
 import Reservation from './pages/Reservation';
-// import About from './components/About';
+
 
 
 import Footer from './components/Footer';
@@ -45,8 +45,8 @@ function App() {
                 <Route exact path="/" component={Home} />
                 <Route exact path="/login" component={LoginForm} />
                 <Route exact path="/signup" component={SignupForm} />
-                <Route exact path="/customer/:phoneNumber" component={CustomerDashboard} />
-                <Route exact path="/checker/:phoneNumber" component={CheckerDashboard} />
+                <Route exact path="/customer" component={CustomerDashboard} />
+                <Route exact path="/checker"/*:phoneNumber"*/ component={CheckerDashboard} />
                 <Route exact path="/reservation" component={Reservation} />
                 <Route exact path="/about" component={About} />
               </Switch>
