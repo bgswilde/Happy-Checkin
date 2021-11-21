@@ -1,0 +1,15 @@
+.checker-dashboard {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: nowrap;
+    width: 100vw;
+}
+
+.checker-res-claim, .checker-pending {
+    padding-top: 2rem;
+}
+
+.checker-claimed, .checker-claimed:hover, .checker-claimed:focus {
+    background-color: var(--accent-orange);
+    color: black;
+}
