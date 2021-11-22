@@ -55,38 +55,38 @@ function ReservationPage2(props) {
 						correct hotel information and reservation number!
 					</p>
 				</Row>
-				<Form noValidate validated={validated} className="row hotel-details" onSubmit={submitFormData}>
+				<Form noValidate validated={validated} className="hotel-details" onSubmit={submitFormData}>
 					<Form.Group controlId="hotelName" className="mb-3" >
 						<Form.Label className="mb-0">Hotel Name</Form.Label>
-						<Form.Control onChange={handleFormData} name="hotelName" placeholder="Fancy Hotel" type="text" required />
+						<Form.Control onBlur={handleFormData} name="hotelName" placeholder="Fancy Hotel" type="text" required />
 					</Form.Group>
 					<Form.Group controlId="hotelAddress1" className="mb-3">
 						<Form.Label className="mb-0">Hotel Address Line 1</Form.Label>
-						<Form.Control onChange={handleFormData} name="hotelAddress1" type="text" required />
+						<Form.Control onBlur={handleFormData} name="hotelAddress1" type="text" required />
 						<Form.Control.Feedback type="invalid">Please add a valid address!</Form.Control.Feedback>
 					</Form.Group>
 					<Form.Group controlId="hotelAddress2" className="mb-3">
 						<Form.Label className="mb-0">Hotel Address Line 2</Form.Label>
-						<Form.Control onChange={handleFormData} name="hotelAddress2" placeholder="(not quite fancy enough for a line 2)" type="text" />
+						<Form.Control onBlur={handleFormData} name="hotelAddress2" placeholder="(not quite fancy enough for a line 2)" type="text" />
 					</Form.Group>
 					<Row>
 						<Form.Group as={Col} md="6" controlId="hotelCity" className="mb-3">
 							<Form.Label className="mb-0">Hotel City</Form.Label>
-							<Form.Control onChange={handleFormData} name="hotelCity" type="text" placeholder="San Fancysco" required />
+							<Form.Control onBlur={handleFormData} name="hotelCity" type="text" placeholder="San Fancysco" required />
 							<Form.Control.Feedback type="invalid">
 								Please provide a valid city.
 							</Form.Control.Feedback>
 						</Form.Group>
 						<Form.Group as={Col} md="3" controlId="hotelState" className="mb-3">
 							<Form.Label className="mb-0">Hotel State</Form.Label>
-							<Form.Control onChange={handleFormData} name="hotelState" type="text" placeholder="Fancylvania" required />
+							<Form.Control onBlur={handleFormData} name="hotelState" type="text" placeholder="Fancylvania" required />
 							<Form.Control.Feedback type="invalid">
 								Please provide a valid state.
 							</Form.Control.Feedback>
 						</Form.Group>
 						<Form.Group as={Col} md="3" controlId="hotelZip" className="mb-3">
 							<Form.Label className="mb-0">Hotel Zip</Form.Label>
-							<Form.Control onChange={handleFormData} name="hotelZip" type="text" placeholder="77777" required />
+							<Form.Control onBlur={handleFormData} name="hotelZip" type="text" placeholder="77777" required />
 							<Form.Control.Feedback type="invalid">
 								Please provide a valid zip.
 							</Form.Control.Feedback>
@@ -96,11 +96,11 @@ function ReservationPage2(props) {
           <Row>
             <Form.Group as={Col} md="6" controlId="date-time" className="mb-3">
               <Form.Label className="mb-0">Desired Checkin Date/Time</Form.Label>
-              <DateTimePickerComponent onChange={handleFormData} name="checkinDate" id="date" placeholder="Select a date and time" required/>
+              <DateTimePickerComponent onBlur={handleFormData} name="checkinDate" id="date" placeholder="We suggest 1 hour before your arrival" required/>
             </Form.Group>
             <Form.Group as={Col} md="6" controlId="reservationNumber" className="mb-3">
 					  	<Form.Label className="mb-0">Hotel Reservation #</Form.Label>
-						  <Form.Control onChange={handleFormData} name="reservationNumber" placeholder="Find this on your booking confirmation!" type="text" required/>
+						  <Form.Control onBlur={handleFormData} name="reservationNumber" placeholder="Find this on your booking confirmation!" type="text" required/>
 	          </Form.Group>
           </Row>
           <Row>
@@ -112,13 +112,13 @@ function ReservationPage2(props) {
                     variant='warning'
 										name={option}
                     label={option}
-										onChange={handleFormData}
+										onBlur={handleFormData}
                   />
               ))}
             </Form.Group>
             <Form.Group as={Col} md="6" controlId="instructions" className="mb-3">
 					  	<Form.Label className="mb-0">Special Instructions</Form.Label>
-						  <Form.Control onChange={handleFormData} name="instructions" as="textarea" rows="5" placeholder="We will try our best to handle your special requests!" required/>
+						  <Form.Control onBlur={handleFormData} name="instructions" as="textarea" rows="5" placeholder="We will try our best to handle your special requests!" required/>
 	          </Form.Group>
           </Row>
           <Row className="justify-content-center">

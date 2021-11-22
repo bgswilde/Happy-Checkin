@@ -11,8 +11,19 @@
   margin-bottom: 20px;
 }
 
-.data-margin p {
-  margin: 0px;
+.package-data {
+  margin: 0px !important;
+  font-weight: 600;
+  color: var(--accent-orange);
+  font-size: 19px;
+}
+
+.data-details {
+  margin: 0px !important;
+}
+
+.list-item {
+  margin-left: 20px;
 }
 
 .data-group-last {
@@ -24,4 +35,13 @@
   color: var(--primary-red);
   font-weight: 600;
   font-size: 18px;
+}
+
+.submit-btn:hover {
+  box-shadow: 0 0 7px 1px rgba(0, 0, 0, 0.7);
+  background-color: var(--primary-red);
+}
+
+.submit-btn:focus {
+  background-color: var(--primary-red);
 }
