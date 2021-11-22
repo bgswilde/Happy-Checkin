@@ -52,10 +52,16 @@ const typeDefs = gql`
     user: User
   }
 
+  type CheckoutSession {
+    id: String
+    payment_intent: String
+  }
+
   type Query {
     me: User
     user: [User]
     users: User
+    checkoutSession: CheckoutSession
   }
 
   type Mutation {
