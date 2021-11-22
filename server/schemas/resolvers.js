@@ -24,7 +24,7 @@ const resolvers = {
         .select('-__v -password')
     },
     jobs: async () => {
-      return Job.find()
+      return Job.find().populate('customer')
     }
   },
 
@@ -85,10 +85,14 @@ const resolvers = {
           { _id: job.id } ,
           { $push: { customer: context.user._id }})
           .populate('customer');
+        const jobPlusPackage = await Job.findOneAndUpdate(
+          { _id: job.id },
+          { $push: { package: {title: args.title, imageUrl: args.imageUrl, cost: args.cost, description: args.description }}}
+        );
         const updatedJob = await Job.findOneAndUpdate(
           { _id: job.id },
           { $push: { hotel: {name: args.name, street1: args.street1, city: args.city, state: args.state, zip: args.zip }}}
-        );
+        ).populate('customer');
         return updatedJob;
       }
 
@@ -98,7 +102,9 @@ const resolvers = {
       if (context.user) {
 
         const job = await Job.findOneAndUpdate(
-          { jobId: args.jobId, ...args }
+          { _id: args.jobId },
+          { checkIn: args.checkIn, claimedAt: args.claimedAt, confirmationKey: args.confirmationKey, instructions: args.instructions },
+          { new: true }
         );
 
         return job;
