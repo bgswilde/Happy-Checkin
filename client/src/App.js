@@ -10,8 +10,8 @@ import CustomerDashboard from './pages/CustomerDashboard';
 import CheckerDashboard from './pages/CheckerDashboard';
 import Reservation from './pages/Reservation';
 // import About from './components/About';
-import {Elements} from '@stripe/react-stripe-js';
-import {loadStripe} from '@stripe/stripe-js';
+// import {Elements} from '@stripe/react-stripe-js';
+// import {loadStripe} from '@stripe/stripe-js';
 
 
 import Footer from './components/Footer';
@@ -36,15 +36,9 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-const stripePromise = loadStripe(`${process.env.STRIPE_PK}`);
-const stripeOptions = {
-  // clientSecret: `{{CLIENT_SECRET}}`,
-};
-
 function App() {
   return (
     <ApolloProvider client={client}>
-      <Elements stripe={stripePromise} options={stripeOptions}>
         <div className="app">
           <Router>
             <Header />
@@ -62,7 +56,6 @@ function App() {
             <Footer />
           </Router>
         </div>
-      </Elements>
     </ApolloProvider>
   )
 }

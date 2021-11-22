@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {
+  Element,
   useStripe, 
   useElements, 
   PaymentElement, 
@@ -40,20 +41,22 @@ const Stripe = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <PaymentElement />
-      
-      <CardNumberElement
-        options={{}}
-      />
-      <CardCvcElement
-        options={{}}
-      />
-      <CardExpiryElement
-        options={{}}
-      />
-      <button>Submit</button>
-    </form>
+    <Element stripe={stripe} >
+      <form onSubmit={handleSubmit}>
+        <PaymentElement />
+        
+        <CardNumberElement
+          options={{}}
+        />
+        <CardCvcElement
+          options={{}}
+        />
+        <CardExpiryElement
+          options={{}}
+        />
+        <button>Submit</button>
+      </form>
+    </Element>
   )
 };
 

@@ -1,7 +1,7 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Job } = require('../models');
 const { signToken } = require('../utils/auth');
-const { createCheckoutSession } = require('../utils/stripe');
+// const { createCheckoutSession } = require('../utils/stripe');
 
 const resolvers = {
   Query: {
@@ -23,16 +23,16 @@ const resolvers = {
     user: async (parent, { phoneNumber }) => {
       return User.findOne({ phoneNumber })
         .select('-__v -password')
-    },
-    checkoutSession: async (parent, args, context) => {
-      const productName = 'testProduct';
-      const unitAmount = 100;
-      const quantity = 1;
-      const successUrl = 'http://example.com/success';
-      const cancelUrl = 'http://example.com/success';
-      const session = await createCheckoutSession(productName, unitAmount, quantity, successUrl, cancelUrl);
-      return session;
     }
+    // checkoutSession: async (parent, args, context) => {
+    //   const productName = 'testProduct';
+    //   const unitAmount = 100;
+    //   const quantity = 1;
+    //   const successUrl = 'http://example.com/success';
+    //   const cancelUrl = 'http://example.com/success';
+    //   const session = await createCheckoutSession(productName, unitAmount, quantity, successUrl, cancelUrl);
+    //   return session;
+    // }
   },
 
   Mutation: {
