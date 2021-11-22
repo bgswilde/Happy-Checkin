@@ -1,0 +1,27 @@
+.submitted-info {
+  margin: 20px;
+  padding: 20px;
+  border: 3px solid var(--secondary-yellow);
+  border-radius: 5px;
+  text-align: left;
+  font-size: 17px;
+}
+
+.data-group {
+  margin-bottom: 20px;
+}
+
+.data-margin p {
+  margin: 0px;
+}
+
+.data-group-last {
+  margin-bottom: 0px;
+}
+
+.data-heading {
+  margin-bottom: 0px;
+  color: var(--primary-red);
+  font-weight: 600;
+  font-size: 18px;
+}

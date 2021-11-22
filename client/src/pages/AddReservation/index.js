@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './index.css'
 import { Container, Button, Row, Col, ProgressBar } from 'react-bootstrap';
 import ReservationPage1 from '../../components/ReservationPage1';
@@ -38,7 +38,7 @@ function AddReservation() {
   }
 
   function goBack() {
-    setPage(1);
+    setPage((page) => page - 1);
   }
 
   // function updateData(type, newData) {
@@ -68,14 +68,18 @@ function AddReservation() {
         {page === 2 && 
           <ReservationPage2 
             setHotelData={setHotelData}
+            hotelData={hotelData}
             nextPage={nextPage}
           />
         }
-        {page === 3 && <ReservationPage3 />}
+        {page === 3 && 
+          <ReservationPage3 
+            hotelData={hotelData}
+          />}
 
         {/* {page !== 3 && <Button className="next-btn" onClick={nextPage}>Next</Button>} */}
         {/* <Button type="submit" onClick={submit}>Looks Great!</Button> */}
-        {page === 2 && <Button className="next-btn" onClick={goBack}>Go Back</Button>} 
+        {page >= 2 && page !== 5 && <Button className="next-btn" onClick={goBack}>Go Back</Button>} 
     </Container> 
   )
 }
