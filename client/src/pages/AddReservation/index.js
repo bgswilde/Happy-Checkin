@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './index.css'
 import { Container, Button, Row, Col, ProgressBar } from 'react-bootstrap';
 import ReservationPage1 from '../../components/ReservationPage1';
@@ -7,16 +7,7 @@ import ReservationPage3 from '../../components/ReservationPage3';
 
 
 function AddReservation() {
-  const [page, setPage] = useState(1);
-  
-  const [userData, setUserData] = useState({
-    userId: '',
-    firstName: '',
-    lastName: '',
-    email: ''
-  });
-
-  const [hotelData, setHotelData] = useState({
+  const blankHotel = {
     hotelName: '',
     hotelAddress1: '',
     hotelCity: '',
@@ -25,7 +16,17 @@ function AddReservation() {
     checkinDate: '',
     options: [],
     instructions: ''
+  };
+
+  const [page, setPage] = useState(1);
+  
+  const [userData, setUserData] = useState({
+    _id: '', 
+    email: '',
+    username: '', 
   });
+
+  const [hotelData, setHotelData] = useState(blankHotel);
 
   const [packageData, setPackageData] = useState({
     name: '',
@@ -38,14 +39,16 @@ function AddReservation() {
   }
 
   function goBack() {
-    setPage(1);
+    setPage((page) => page - 1);
   }
 
-  // function updateData(type, newData) {
-  //   setReservationData((reservationData) => {
-  //     return { ...reservationData, [type]: newData };
-  //   });
-  // }
+  function goBackHotel() {
+    setHotelData(blankHotel);
+    goBack();
+  }
+
+  // function for useMutation that adds a reservation, 
+  // to be executed upon submit payment button on page 4
 
   console.log(`the current page is ${page}`);
   console.log(`the current package selection information is ${JSON.stringify(packageData)}`);
@@ -68,14 +71,21 @@ function AddReservation() {
         {page === 2 && 
           <ReservationPage2 
             setHotelData={setHotelData}
+            hotelData={hotelData}
             nextPage={nextPage}
           />
         }
-        {page === 3 && <ReservationPage3 />}
-
-        {/* {page !== 3 && <Button className="next-btn" onClick={nextPage}>Next</Button>} */}
-        {/* <Button type="submit" onClick={submit}>Looks Great!</Button> */}
-        {page === 2 && <Button className="next-btn" onClick={goBack}>Go Back</Button>} 
+        {page === 3 && 
+          <ReservationPage3 
+            hotelData={hotelData}
+            packageData={packageData}
+          />}
+        {page === 2 || page === 4 && 
+          <Button className="next-btn" onClick={goBack}>Go Back</Button>
+        } 
+        {page === 3 && 
+          <Button className="next-btn" onClick={goBackHotel}>Go Back</Button>
+        } 
     </Container> 
   )
 }
