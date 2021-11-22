@@ -1,15 +1,25 @@
 import React, { useState } from 'react';
 import { Button, Modal, ModalBody, ModalFooter, ModalHeader} from 'reactstrap';
 import './index.css'
+import { useQuery } from '@apollo/client';
+import { QUERY_JOBS } from '../../utils/queries';
 
-function CheckerDashboard () {
+function CheckerDashboard ({ reservations }) {
     const [modal1, setModal1] = useState(false);
     const modalToggle1 = () => setModal1(!modal1);
 
     const [modal, setModal] = useState(false);
     const modalToggle = () => setModal(!modal);
 
-    return (
+    const { loading, data } = useQuery(QUERY_JOBS);
+    const jobs = data?.jobs || [];
+    console.log(jobs);
+
+    
+      if (!jobs.length) {
+        return <h3>No Jobs Yet</h3>;
+      } 
+      return (
     <section className="checker-dashboard">
       <div>
         <h1>Reservation(s) to Claim</h1>

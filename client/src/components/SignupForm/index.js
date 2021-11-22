@@ -5,6 +5,8 @@ import React, { useState } from 'react';
 import { Container, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import './index.css';
+import { useMutation } from '@apollo/client';
+import { ADD_USER } from '../../utils/mutations';
 
 
 function SignupForm () {
@@ -19,31 +21,32 @@ function SignupForm () {
     });
   };
 
-  /*const handleFormSubmit = async (event) => {
+  const [addUser, { error }] = useMutation(ADD_USER);
+
+  const handleFormSubmit = async (event) => {
     event.preventDefault();
 
     try {
-    const mutationRe = await addUser({
-      variables: {
-        email: formState.email,
-        phoneNumber: formState.phoneNumber,
-        password: formState.password
-      }
-    });
-    const token = mutationRe.data.addUser.token;
-    Auth.login(token);
-    } catch (error) {
-      console.error(error)
+      const { data } = await addUser({
+        variables: { ...formState }
+      });
+      console.log(data);
+    } catch (e) {
+      console.error(e);
     }
-  }*/
+  }
 
   return(
     <Container className="log-container">
       <div className="form-card">
-        <Form /*onSubmit={handleFormSubmit}*/>
+        <Form onSubmit={handleFormSubmit}>
           <FormGroup>
-            <Label for="email">Email</Label>
-            <Input type="email" name="email" id="loginEmail" placeholder="Enter a valid Email address" onChange={handleChange} />
+            <Label for="firstName">First Name</Label>
+            <Input type="firstName" name="firstName" id="firstName" placeholder="Enter your first name" onChange={handleChange} />
+          </FormGroup>
+          <FormGroup>
+            <Label for="lastName">Last Name</Label>
+            <Input type="lastName" name="lastName" id="lastName" placeholder="Enter your last name" onChange={handleChange} />
           </FormGroup>
           <FormGroup>
             <Label for="phoneNumber">Phone Number</Label>
@@ -55,6 +58,7 @@ function SignupForm () {
           </FormGroup>
           <Button className="submit-btn" color="info" type="submit">Register</Button>
         </Form>
+        {error && <div>Sign up failed</div>}
       </div>
       <p></p>
       <Link to="/login" className="signup-link">Back to login</Link>
