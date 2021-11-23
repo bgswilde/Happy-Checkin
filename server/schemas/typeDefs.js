@@ -57,12 +57,17 @@ const typeDefs = gql`
     payment_intent: String
   }
 
+  type Config {
+    STRIPE_PK: String
+  }
+
   type Query {
     me: User
     user(phoneNumber: String!): User
     users: [User]
     jobs: [Job]
     checkoutSession(productName: String!, unitAmount: Int!, quantity: Int!): CheckoutSession
+    config: Config
   }
 
   type Mutation {

@@ -89,7 +89,7 @@ function AddReservation() {
           <Button className="next-btn" onClick={goBack}>Go Back</Button>
         } 
         {page === 3 && 
-          <Button className="next-btn" onClick={goBackHotel}>Go Back</Button>
+          <Button className="next-btn" onClick={goBackHotel}>Go Back</Button> // Should this be near page === 3 ?
         } 
     </Container> 
   )

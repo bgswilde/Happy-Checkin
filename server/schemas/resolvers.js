@@ -1,3 +1,4 @@
+require('dotenv').config()
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Job } = require('../models');
 const { signToken } = require('../utils/auth');
@@ -29,7 +30,11 @@ const resolvers = {
     },
     checkoutSession: async (parent, args, context) => {
       const session = await createCheckoutSession(args.productName, args.unitAmount, args.quantity, context.headers.origin);
+      console.log('checkoutSession', session)
       return session;
+    },
+    config: async (parent, args, context) => {
+      return process.env;
     }
   },
 
