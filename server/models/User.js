@@ -5,7 +5,8 @@ const userSchema = new Schema(
   {
     role: {
       type: Number,
-      required: true
+      required: true,
+      default: 0
     },
     phoneNumber: {
       type: String,

@@ -1,17 +1,15 @@
 import React, { useState } from 'react';
-//import { useMutation } from '@apollo/client';
-//import { ADD_USER } from '../../utils/mutations';
-//import Auth from '../../utils/auth'
+import { useMutation } from '@apollo/client';
+import { ADD_USER } from '../../utils/mutations';
+import Auth from '../../utils/auth'
 import { Container, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import './index.css';
-import { useMutation } from '@apollo/client';
-import { ADD_USER } from '../../utils/mutations';
 
 
 function SignupForm () {
   const [formState, setFormState] = useState({email: '', phoneNumber: '', password: '' })
-  //const [addUser, { error }] = useMutation(ADD_USER);
+  const [addUser, { error }] = useMutation(ADD_USER);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,8 +18,6 @@ function SignupForm () {
       [name]: value,
     });
   };
-
-  const [addUser, { error }] = useMutation(ADD_USER);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
