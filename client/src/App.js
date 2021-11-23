@@ -1,4 +1,5 @@
 import React from 'react';
+import './App.css'
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { setContext } from '@apollo/client/link/context';
@@ -8,15 +9,13 @@ import LoginForm from './components/LoginForm';
 import SignupForm from './components/SignupForm';
 import CustomerDashboard from './pages/CustomerDashboard';
 import CheckerDashboard from './pages/CheckerDashboard';
-import Reservation from './pages/Reservation';
-// import About from './components/About';
-
+import AddReservation from './pages/AddReservation';
 
 import Footer from './components/Footer';
 import About from './pages/About';
 
 const httpLink = createHttpLink({
-  uri: '/graphql',
+  uri: 'http://localhost:3001/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -45,9 +44,9 @@ function App() {
                 <Route exact path="/" component={Home} />
                 <Route exact path="/login" component={LoginForm} />
                 <Route exact path="/signup" component={SignupForm} />
-                <Route exact path="/customer/:phoneNumber" component={CustomerDashboard} />
-                <Route exact path="/checker/:phoneNumber" component={CheckerDashboard} />
-                <Route exact path="/reservation" component={Reservation} />
+                <Route exact path="/:id/customer" component={CustomerDashboard} />
+                <Route exact path="/:id/checker" component={CheckerDashboard} />
+                <Route exact path="/reservation" component={AddReservation} />
                 <Route exact path="/about" component={About} />
               </Switch>
             </div>

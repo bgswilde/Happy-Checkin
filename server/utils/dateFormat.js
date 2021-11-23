@@ -54,7 +54,7 @@ const hourFormat = (hour) => {
 }
 
 //convert timestamp to formatted date string
-const dateFormat = (timestamp) => {
+const dateFormater = (timestamp) => {
     
     const dateObj = new Date(timestamp);
     const monthStr = monthFormat(dateObj.getMonth());
@@ -73,5 +73,5 @@ module.exports = {
     monthFormat,
     dayFormat,
     hourFormat,
-    dateFormat
+    dateFormater
 };

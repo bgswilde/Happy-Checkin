@@ -1,4 +1,44 @@
-#loginEmail, #phoneNumber, #loginPassword {
+/* #loginEmail, #phoneNumber, #loginPassword {
     font-weight: 200;
     font-style: italic;
+} */
+.user-details {
+    text-align: left;
+    padding: 15px;
+}
+
+.subtitle {
+    font-style: italic;
+    font-size: 17px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+.signup-link {
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 15px;
+    height: fit-content;
+}
+
+.bottom-link {
+    color: var(--accent-orange);
+}
+.bottom-link:hover {
+    color: var(--base-grey);
+}
+
+.bottom-msg {
+    margin: 0px auto 5px auto;
+}
+
+.error-msg {
+    margin: -10px auto 15px auto;
+    padding: 5px;
+    font-size: 20px;
+    font-weight: 500;
+    font-style: italic;
+    color: var(--primary-red);
+    background-color: lightgray;
+    width: 100%;
 }

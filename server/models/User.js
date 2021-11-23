@@ -1,11 +1,14 @@
-const { Schema, model } = require('mongoose');
+const mongoose = require('mongoose');
+
+const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
 
 const userSchema = new Schema(
   {
     role: {
       type: Number,
-      required: true
+      required: true,
+      default: 0
     },
     phoneNumber: {
       type: String,
@@ -53,6 +56,6 @@ userSchema.virtual('displayName').get(function() {
   return `${this.firstName} ${this.lastName}`;
 });
 
-const User = model('User', userSchema);
+const User = mongoose.model('User', userSchema);
 
 module.exports = User;

@@ -1,0 +1,28 @@
+.title {
+  color: var(--primary-red);
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+.progress {
+  background-color: var(--alt-base-grey);
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.next-btn {
+  margin-top: 20px;
+  background-color: var(--primary-red);
+  font-size: 20px;
+  font-weight: 500;
+  border: none;
+  border-color: var(--base-grey);
+}
+
+.next-btn:hover {
+  box-shadow: 0 0 7px 1px rgba(0, 0, 0, 0.7);
+  background-color: var(--primary-red);
+}
+
+.next-btn:focus {
+  background-color: var(--primary-red);
+}

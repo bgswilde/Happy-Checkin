@@ -1,36 +1,38 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model, Types } = require('mongoose');
 const FeedbackSchema = require('./Feedback');
 const PackageSchema = require('./Package');
 const HotelSchema = require('./Hotel');
-const dateFormat = require('../utils/dateFormat');
+const { dateFormater } = require('../utils/dateFormat');
 
 const JobSchema = new Schema(
   {
     createdAt: {
         type: Date,
         default: Date.now,
-        get: timestamp => dateFormat(timestamp)
+        get: timestamp => dateFormater(timestamp)
     },
     claimedAt: {
-        type: Date
+        type: Date,
+        get: timestamp => dateFormater(timestamp)
     },
     completedAt: {
-        type: Date
+        type: Date,
+        get: timestamp => dateFormater(timestamp)
     },
-    customer: {
+    customer: [{
         type: Schema.Types.ObjectId,
         ref: 'User'
-    },
-    checker: {
+    }],
+    checker: [{
         type: Schema.Types.ObjectId,
         ref: 'User'
-    },
+    }],
     package: [PackageSchema],
     hotel: [HotelSchema],
     feedback: [FeedbackSchema],
 
     checkIn: {
-        type: Date
+        type: String
     },
     confirmationKey: {
         type: String
