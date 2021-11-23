@@ -1,63 +1,48 @@
-import React, { useState } from 'react';
-import {
-  Element,
-  useStripe, 
-  useElements, 
-  PaymentElement, 
-  CardNumberElement,
-  CardExpiryElement,
-  CardCvcElement
-} from '@stripe/react-stripe-js';
-import './index.css';
+import React, { useEffect } from 'react';
+import { loadStripe } from '@stripe/stripe-js';
+import { QUERY_CONFIG, QUERY_CHECKOUT_SESSION } from "../../utils/queries";
+import { useLazyQuery, useQuery } from '@apollo/client';
+import './index.css'
 
-const Stripe = () => {
-  const stripe = useStripe();
-  const elements = useElements(); // set in App.js
+/*
 
-  const handleSubmit = async (event) => {
-    // We don't want to let default form submission happen here,
-    // which would refresh the page.
-    event.preventDefault();
+ <Stripe product_name={'test'} unit_amount={1000} quantity={1}/>
+ 
+ */
 
-    if (!stripe || !elements) {
-      // Stripe.js has not yet loaded.
-      // Make sure to disable form submission until Stripe.js has loaded.
-      return;
+const Stripe = (props) => {
+  // stripe public key from graphql
+  const { data: configData } = useQuery(QUERY_CONFIG);
+  // create checkout session
+  const [getCheckout, { data: checkoutData }] = useLazyQuery(
+    QUERY_CHECKOUT_SESSION, 
+    {
+      variables: {
+        productName: props.product_name, 
+        unitAmount: props.unit_amount, 
+        quantity: props.quantity
+      }
+  });
+
+  // redirect to stripe checkout
+  useEffect( () => {
+    if (checkoutData && configData) {
+      const stripePromise = loadStripe(configData.config.STRIPE_PK);
+      stripePromise.then((res) => {
+        res.redirectToCheckout({sessionId: checkoutData.checkoutSession.id});
+      });
     }
+  }, [checkoutData])
 
-    const result = await stripe.confirmPayment({
-      elements,
-      confirmParams: {
-        return_url: "https://my-site.com/order/123/complete",
-      },
-    });
-
-    if (result.error) {
-      // display error
-      console.log(result.error.message);
-    } else {
-      // success + redirect
-    }
-  };
+  // get checkout session on submission
+  function submitCheckout() {
+    getCheckout();
+  }
 
   return (
-    <Element stripe={stripe} >
-      <form onSubmit={handleSubmit}>
-        <PaymentElement />
-        
-        <CardNumberElement
-          options={{}}
-        />
-        <CardCvcElement
-          options={{}}
-        />
-        <CardExpiryElement
-          options={{}}
-        />
-        <button>Submit</button>
-      </form>
-    </Element>
+    <button onClick={submitCheckout}>Checkout</button>
   )
+
 };
 
 export default Stripe;
