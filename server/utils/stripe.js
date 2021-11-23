@@ -2,7 +2,7 @@ require('dotenv').config()
 const stripe = require('stripe')(`${process.env.STRIPE_SK}`);
 
 
-const createCheckoutSession = async (productName, unitAmount, quantity, successUrl, cancelUrl) => {
+const createCheckoutSession = async (productName, unitAmount, quantity, url) => {
     const session = await stripe.checkout.sessions.create({
         line_items: [
             {
@@ -17,11 +17,11 @@ const createCheckoutSession = async (productName, unitAmount, quantity, successU
             },
         ],
         mode: 'payment',
-        success_url: `${successUrl}`,
-        cancel_url: `${cancelUrl}`,
+        success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
+        cancel_url: `${url}`,
     });
 
-    console.log('createCheckoutSession', session);
+    // console.log('createCheckoutSession', session);
     return session;
 }
 
