@@ -10,10 +10,6 @@ import SignupForm from './components/SignupForm';
 import CustomerDashboard from './pages/CustomerDashboard';
 import CheckerDashboard from './pages/CheckerDashboard';
 import AddReservation from './pages/AddReservation';
-// import About from './components/About';
-// import {Elements} from '@stripe/react-stripe-js';
-// import {loadStripe} from '@stripe/stripe-js';
-
 
 import Footer from './components/Footer';
 import About from './pages/About';

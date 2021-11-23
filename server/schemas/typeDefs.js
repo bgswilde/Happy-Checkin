@@ -62,6 +62,7 @@ const typeDefs = gql`
     user(phoneNumber: String!): User
     users: [User]
     jobs: [Job]
+    checkoutSession(productName: String!, unitAmount: Int!, quantity: Int!): CheckoutSession
   }
 
   type Mutation {

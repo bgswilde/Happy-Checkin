@@ -26,3 +26,12 @@ query {
     }
   }
 `;
+
+export const QUERY_CHECKOUT_SESSION = gql`
+  query checkoutSession($productName: String!, $unitAmount: Int!, $quantity: Int!) {
+    checkoutSession(productName: $productName, unitAmount: $unitAmount, quantity: $quantity) {
+      id
+      payment_intent
+    }
+  }
+`;
