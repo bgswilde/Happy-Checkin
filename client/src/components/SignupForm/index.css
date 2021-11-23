@@ -1,4 +1,8 @@
-#loginEmail, #phoneNumber, #loginPassword {
+/* #loginEmail, #phoneNumber, #loginPassword {
     font-weight: 200;
     font-style: italic;
+} */
+.user-details {
+    text-align: left;
+    padding: 15px;
 }

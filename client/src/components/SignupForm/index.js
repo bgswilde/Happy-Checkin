@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth'
-import { Container, Form, FormGroup, Label, Input, Button } from 'reactstrap';
+import { Container, Col, Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './index.css';
 
@@ -46,29 +46,29 @@ function SignupForm () {
   }
 
   return(
-    <Container className="log-container">
-      <div className="form-card">
-        <Form onSubmit={handleFormSubmit}>
-          <FormGroup>
-            <Label for="firstName">First Name</Label>
-            <Input type="firstName" name="firstName" id="firstName" placeholder="Enter your first name" onChange={handleChange} />
-          </FormGroup>
-          <FormGroup>
-            <Label for="lastName">Last Name</Label>
-            <Input type="lastName" name="lastName" id="lastName" placeholder="Enter your last name" onChange={handleChange} />
-          </FormGroup>
-          <FormGroup>
-            <Label for="phoneNumber">Phone Number (optional)</Label>
-            <Input type="phoneNumber" name="phoneNumber" id="phoneNumber" placeholder="Phone number(area code first)" onChange={handleChange} />
-          </FormGroup>
-          <FormGroup>
-            <Label for="password">Password</Label>
-            <Input type="password" name="password" id="loginPassword" placeholder="At least 5 characters long" onChange={handleChange} />
-          </FormGroup>
+    <Container>
+      <Col md="8" className="form-card log-container">
+        <Form className="user-details" onSubmit={handleFormSubmit}>
+          <Form.Group className="mb-3">
+            <Form.Label className="mb-0" for="firstName">First Name</Form.Label>
+            <Form.Control type="text" name="firstName" id="firstName" placeholder="Enter your first name" onChange={handleChange} />
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label className="mb-0" for="lastName">Last Name</Form.Label>
+            <Form.Control type="text" name="lastName" id="lastName" placeholder="Enter your last name" onChange={handleChange} />
+          </Form.Group>
+          <Form.Group className="mb-3">
+            <Form.Label className="mb-0" for="phoneNumber">Phone Number</Form.Label>
+            <Form.Control type="text" name="phoneNumber" id="phoneNumber" placeholder="ex. 9876543210" onChange={handleChange} />
+          </Form.Group >
+          <Form.Group className="mb-3">
+            <Form.Label className="mb-0" for="password">Password</Form.Label>
+            <Form.Control type="password" name="password" id="loginPassword" placeholder="At least 5 characters long" onChange={handleChange} />
+          </Form.Group>
           <Button className="submit-btn" color="info" type="submit">Register</Button>
         </Form>
         {error && <div>Sign up failed</div>}
-      </div>
+      </Col>
       <p></p>
       <Link to="/login" className="signup-link">Back to login</Link>
     </Container>
