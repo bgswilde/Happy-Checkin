@@ -34,6 +34,7 @@ const typeDefs = gql`
 
   type Hotel {
     _id: ID
+    name: String
     street1: String
     street2: String
     city: String
@@ -72,13 +73,13 @@ const typeDefs = gql`
   type Mutation {
     login(phoneNumber: String!, password: String!): Auth
 
-    addUser(phoneNumber: String!, firstName: String!, lastName: String!, password: String!): Auth
-    updateUser(role: Int, phoneNumber: String, firstName: String, lastName: String, password: String): User
+    addUser(role: Int!, phoneNumber: String!, firstName: String!, lastName: String!, password: String!, email: String!): User
+    updateUser(role: Int, phoneNumber: String, firstName: String, lastName: String, password: String): Auth
     removeUser(userId: ID): User
     
-    addReservation(userId: String!, checkIn: String!, confirmationKey: String!, name: String!, street1: String!, street2: String, city: String!, state: String!, zip: Int!, title: String!, imageUrl: String!, cost: Int!, description: String ): Reservation
-    updateReservation(reservationId: ID!, checkIn: String, claimedAt: String, completedAt: String, confirmationKey: String, instructions: String ): Reservation
-    removeReservation(reservationId: ID!): Reservation
+    addJob(userId: ID!, checkIn: String!, confirmationKey: String!, name: String!, street1: String!, street2: String, city: String!, state: String!, zip: Int!, title: String!, imageUrl: String!, cost: Int!, description: String ): Job
+    updateJob(jobId: ID!, checkIn: String, claimedAt: String, completedAt: String, confirmationKey: String, instructions: String ): Job
+    removeJob(jobId: ID!): Job
     
   }
 
