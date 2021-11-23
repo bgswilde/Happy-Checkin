@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import './index.css';
 
 function LoginForm () {
-  const [formState, setFormState] = useState({email: '', password: '' })
+  const [formState, setFormState] = useState({phoneNumber: '', password: '' })
   const [login] = useMutation(LOGIN_USER);
   
   const handleChange = (e) => {
@@ -24,7 +24,7 @@ function LoginForm () {
     
     try {
       const data  = await login({
-        variables: { email: formState.email, password: formState.password },
+        variables: { phoneNumber: formState.phoneNumber, password: formState.password },
       });
       const token = data.data.login.token;
       
@@ -36,7 +36,7 @@ function LoginForm () {
     let user = Auth.getProfile();
 
     setFormState({
-      email: '',
+      phoneNumber: '',
       password: ''
     })
     if (user.data.role === 0){
@@ -52,8 +52,8 @@ function LoginForm () {
       <div className="form-card">
         <Form onSubmit={handleSubmit}>
           <FormGroup>
-            <Label for="email">Email</Label>
-            <Input type="email" name="email" id="loginEmail" value={formState.email} onChange={handleChange} />
+            <Label for="phoneNumber">Phone Number</Label>
+            <Input type="phoneNumber" name="phoneNumber" id="phoneNumber" value={formState.email} onChange={handleChange} />
           </FormGroup>
           <FormGroup>
             <Label for="password">Password</Label>
