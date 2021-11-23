@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Collapse, Card, CardBody, Modal, ModalBody, ModalHeader, ModalFooter } from 'reactstrap';
 import './index.css'
-import { Link } from 'react-router-dom';
 
 function CustomerDashboard () {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,10 +15,14 @@ function CustomerDashboard () {
 
   const modalToggle = () => setModal(!modal);
 
+  const Reservation = () => {
+    window.location.assign('/reservation');
+  }
+
   return (
   <main>
     <div className="add-reserve">
-      <Link to="/reservation"><Button block size="lg" className="add-btn">Add Your Reservation!</Button></Link>
+      <Button block size="lg" className="add-btn" onClick={Reservation}>Add Your Reservation!</Button>
     </div>
   <section className="reserve-list">
     <div className="customer-list">

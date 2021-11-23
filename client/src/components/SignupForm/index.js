@@ -1,17 +1,14 @@
 import React, { useState } from 'react';
-//import { useMutation } from '@apollo/client';
-//import { ADD_USER } from '../../utils/mutations';
-//import Auth from '../../utils/auth'
+import { useMutation } from '@apollo/client';
+import { ADD_USER } from '../../utils/mutations';
+import Auth from '../../utils/auth'
 import { Container, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import './index.css';
-import { useMutation } from '@apollo/client';
-import { ADD_USER } from '../../utils/mutations';
-
 
 function SignupForm () {
   const [formState, setFormState] = useState({email: '', phoneNumber: '', password: '' })
-  //const [addUser, { error }] = useMutation(ADD_USER);
+  const [addUser, {error}] = useMutation(ADD_USER);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,18 +18,29 @@ function SignupForm () {
     });
   };
 
-  const [addUser, { error }] = useMutation(ADD_USER);
-
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      const { data } = await addUser({
-        variables: { ...formState }
-      });
-      console.log(data);
-    } catch (e) {
-      console.error(e);
+    const mutationRe = await addUser({
+      variables: {
+        email: formState.email,
+        phoneNumber: formState.phoneNumber,
+        password: formState.password
+      }
+    });
+    const token = mutationRe.data.addUser.token;
+    
+    Auth.login(token);
+    } catch (error) {
+      console.error(error)
+    }
+    let user = Auth.getProfile();
+    if (user.data.role === 0) {
+      window.location.assign(`${user.data._id}/customer`)
+    }
+    else if (user.data.role === 1 || user.data.role === 2) {
+      window.location.assign(`${user.data._id}/checker`)
     }
   }
 
@@ -49,7 +57,7 @@ function SignupForm () {
             <Input type="lastName" name="lastName" id="lastName" placeholder="Enter your last name" onChange={handleChange} />
           </FormGroup>
           <FormGroup>
-            <Label for="phoneNumber">Phone Number</Label>
+            <Label for="phoneNumber">Phone Number (optional)</Label>
             <Input type="phoneNumber" name="phoneNumber" id="phoneNumber" placeholder="Phone number(area code first)" onChange={handleChange} />
           </FormGroup>
           <FormGroup>
