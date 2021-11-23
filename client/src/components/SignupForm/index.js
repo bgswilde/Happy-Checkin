@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-//import { useMutation } from '@apollo/client';
-//import { ADD_USER } from '../../utils/mutations';
-//import Auth from '../../utils/auth'
+import { useMutation } from '@apollo/client';
+import { ADD_USER } from '../../utils/mutations';
+import Auth from '../../utils/auth'
 import { Container, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import './index.css';
@@ -9,7 +9,7 @@ import './index.css';
 
 function SignupForm () {
   const [formState, setFormState] = useState({email: '', phoneNumber: '', password: '' })
-  //const [addUser, { error }] = useMutation(ADD_USER);
+  const [addUser] = useMutation(ADD_USER);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -19,7 +19,7 @@ function SignupForm () {
     });
   };
 
-  /*const handleFormSubmit = async (event) => {
+  const handleFormSubmit = async (event) => {
     event.preventDefault();
 
     try {
@@ -31,22 +31,30 @@ function SignupForm () {
       }
     });
     const token = mutationRe.data.addUser.token;
+    
     Auth.login(token);
     } catch (error) {
       console.error(error)
     }
-  }*/
+    let user = Auth.getProfile();
+    if (user.data.role === 0) {
+      window.location.assign(`${user.data._id}/customer`)
+    }
+    else if (user.data.role === 1 || user.data.role === 2) {
+      window.location.assign(`${user.data._id}/checker`)
+    }
+  }
 
   return(
     <Container className="log-container">
       <div className="form-card">
-        <Form /*onSubmit={handleFormSubmit}*/>
+        <Form onSubmit={handleFormSubmit}>
           <FormGroup>
             <Label for="email">Email</Label>
             <Input type="email" name="email" id="loginEmail" placeholder="Enter a valid Email address" onChange={handleChange} />
           </FormGroup>
           <FormGroup>
-            <Label for="phoneNumber">Phone Number</Label>
+            <Label for="phoneNumber">Phone Number (optional)</Label>
             <Input type="phoneNumber" name="phoneNumber" id="phoneNumber" placeholder="Phone number(area code first)" onChange={handleChange} />
           </FormGroup>
           <FormGroup>

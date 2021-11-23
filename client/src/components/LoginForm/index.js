@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
-//import { useMutation } from '@apollo/client';
-//import { LOGIN_USER } from '../../utils/mutations';
-//import Auth from '../../utils/auth';
+import { useMutation } from '@apollo/client';
+import { LOGIN_USER } from '../../utils/mutations';
+//import { QUERY_ME } from '../../utils/queries';
+import Auth from '../../utils/auth';
 import { Container, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import './index.css';
 
 function LoginForm () {
   const [formState, setFormState] = useState({email: '', password: '' })
-  //const [login, { error }] = useMutation(LOGIN_USER);
-
+  const [login] = useMutation(LOGIN_USER);
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormState({
@@ -18,28 +19,38 @@ function LoginForm () {
     });
   };
 
-  /*const handleSubmit = async(event) => {
+  const handleSubmit = async(event) => {
     event.preventDefault();
-
+    
     try {
-      const { data } = await login({
-        variables: { ...formState }
+      const data  = await login({
+        variables: { email: formState.email, password: formState.password },
       });
-      Auth.login(data.login.token)
+      const token = data.data.login.token;
+      
+      Auth.login(token)
     } catch (e) {
       console.error(e)
     }
+
+    let user = Auth.getProfile();
 
     setFormState({
       email: '',
       password: ''
     })
-  }*/
+    if (user.data.role === 0){
+    window.location.assign(`${user.data._id}/customer`)
+    }
+    else if (user.data.role === 1 || user.data.role === 2) {
+      window.location.assign(`${user.data._id}/checker`)
+    }
+  }
 
   return(
     <Container className="log-container">
       <div className="form-card">
-        <Form /*onSubmit={handleSubmit}*/>
+        <Form onSubmit={handleSubmit}>
           <FormGroup>
             <Label for="email">Email</Label>
             <Input type="email" name="email" id="loginEmail" value={formState.email} onChange={handleChange} />
