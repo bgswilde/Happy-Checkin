@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-import React, { useState } from 'react';
-import Stripe from '../Stripe';
-=======
 import React from 'react';
 import { 
   Row, 
@@ -13,16 +9,8 @@ import './index.css'
 
 function ReservationPage3(props) {
   const { hotelData, packageData } = props
->>>>>>> feature/reservation-form
 
   return (
-<<<<<<< HEAD
-    <div>
-      Hey there! It's me, page 3!
-      {/* use this page to confirm details and submit*/}
-      <Stripe />
-    </div>
-=======
     <Container>
       <Col lg="9" className='form-block p-4'>
         <Row>
@@ -86,7 +74,6 @@ function ReservationPage3(props) {
         </Row>
       </Col>
     </Container>
->>>>>>> feature/reservation-form
   )
 }
 
