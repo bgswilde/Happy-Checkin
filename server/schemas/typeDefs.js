@@ -54,7 +54,6 @@ const typeDefs = gql`
 
   type CheckoutSession {
     id: String
-    payment_intent: String
   }
 
   type Config {
@@ -73,7 +72,7 @@ const typeDefs = gql`
   type Mutation {
     login(phoneNumber: String!, password: String!): Auth
 
-    addUser(role: Int!, phoneNumber: String!, firstName: String!, lastName: String!, password: String!): User
+    addUser(phoneNumber: String!, firstName: String!, lastName: String!, password: String!): Auth
     updateUser(role: Int, phoneNumber: String, firstName: String, lastName: String, password: String): User
     removeUser(userId: ID): User
     

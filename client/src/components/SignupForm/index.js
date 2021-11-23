@@ -22,20 +22,22 @@ function SignupForm () {
     event.preventDefault();
 
     try {
-    const mutationRe = await addUser({
-      variables: {
-        firstName: formState.firstName,
-        lastName: formState.lastName,
-        phoneNumber: formState.phoneNumber,
-        password: formState.password
-      }
-    });
-    const token = mutationRe.data.addUser.token;
-    
-    Auth.login(token);
+      const mutationRe = await addUser({
+        variables: {
+          firstName: formState.firstName,
+          lastName: formState.lastName,
+          phoneNumber: formState.phoneNumber,
+          password: formState.password
+        }
+      });
+
+      const token = mutationRe.data.addUser.token;
+      
+      Auth.login(token);
     } catch (error) {
       console.error(error)
     }
+
     let user = Auth.getProfile();
     if (user.data.role === 0) {
       window.location.assign(`${user.data._id}/customer`)

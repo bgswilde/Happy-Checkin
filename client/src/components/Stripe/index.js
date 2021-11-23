@@ -13,7 +13,8 @@ import './index.css'
 const Stripe = (props) => {
   // stripe public key from graphql
   const { data: configData } = useQuery(QUERY_CONFIG);
-  // create checkout session
+  
+  // create checkout session via graphql
   const [getCheckout, { data: checkoutData }] = useLazyQuery(
     QUERY_CHECKOUT_SESSION, 
     {
