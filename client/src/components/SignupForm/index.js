@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import './index.css';
 
 function SignupForm () {
-  const [formState, setFormState] = useState({email: '', phoneNumber: '', password: '' })
+  const [formState, setFormState] = useState({firstName: '', lastName: '', phoneNumber: '', password: '' })
   const [addUser, {error}] = useMutation(ADD_USER);
 
   const handleChange = (e) => {
@@ -24,7 +24,8 @@ function SignupForm () {
     try {
     const mutationRe = await addUser({
       variables: {
-        email: formState.email,
+        firstName: formState.firstName,
+        lastName: formState.lastName,
         phoneNumber: formState.phoneNumber,
         password: formState.password
       }
