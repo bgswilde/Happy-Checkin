@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth'
+<<<<<<< HEAD
 import { Container, Col, Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './index.css';
@@ -9,6 +10,16 @@ import './index.css';
 function SignupForm () {
   const [formState, setFormState] = useState({firstName: '', lastName: '', phoneNumber: '', password: '' })
   const [addUser, {error}] = useMutation(ADD_USER);
+=======
+import { Container, Form, FormGroup, Label, Input, Button } from 'reactstrap';
+import { Link } from 'react-router-dom';
+import './index.css';
+
+
+function SignupForm () {
+  const [formState, setFormState] = useState({email: '', phoneNumber: '', password: '' })
+  const [addUser, { error }] = useMutation(ADD_USER);
+>>>>>>> feature/style-consistency
 
   const handleChange = (e) => {
     const { name, value } = e.target;
