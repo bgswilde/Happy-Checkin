@@ -90,10 +90,10 @@ const resolvers = {
     },
     addJob: async (parent, args, context) => { // tested successfully -BK
       if (context.user) {
-        const job = await Job.create({...args, customer: context.user})
+        const job = await Job.create({...args, customer: args.userId})
         const jobPlusCustomer = Job.findOneAndUpdate( 
           { _id: job.id } ,
-          { $push: { customer: context.user._id }})
+          { $push: { customer: args.userId }})
           .populate('customer');
         const jobPlusPackage = await Job.findOneAndUpdate(
           { _id: job.id },

@@ -71,7 +71,7 @@ const typeDefs = gql`
     updateUser(role: Int, phoneNumber: String, firstName: String, lastName: String, password: String): User
     removeUser(userId: ID): User
     
-    addJob(checkIn: String!, confirmationKey: String!, name: String!, street1: String!, street2: String, city: String!, state: String!, zip: Int!, title: String!, imageUrl: String!, cost: Int!, description: String ): Job
+    addJob(userId: String!, checkIn: String!, confirmationKey: String!, name: String!, street1: String!, street2: String, city: String!, state: String!, zip: Int!, title: String!, imageUrl: String!, cost: Int!, description: String ): Job
     updateJob(jobId: ID!, checkIn: String, claimedAt: String, completedAt: String, confirmationKey: String, instructions: String ): Job
     removeJob(jobId: ID!): Job
     

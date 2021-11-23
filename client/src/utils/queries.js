@@ -18,6 +18,7 @@ query {
       }
       hotel {
         street1
+        street2
         city
         state
         zip
@@ -26,3 +27,36 @@ query {
     }
   }
 `;
+
+export const QUERY_USERS = gql`
+  query {
+    users {
+      _id
+      phoneNumber
+      firstName
+      lastName
+    } 
+  }
+`
+
+export const QUERY_USER = gql`
+  query($phoneNumber: String!) {
+    user(phoneNumber: $phoneNumber) {
+      _id
+      phoneNumber
+      firstName
+      lastName
+    }
+  }
+`
+
+export const QUERY_ME = gql`
+  query {
+    me {
+      _id
+      phoneNumber
+      firstName
+      lastName
+    }
+  }
+`
