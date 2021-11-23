@@ -1,6 +1,6 @@
 require('dotenv').config()
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Job } = require('../models');
+const { User, Reservation } = require('../models');
 const { signToken } = require('../utils/auth');
 const { createCheckoutSession } = require('../utils/stripe');
 
@@ -25,8 +25,8 @@ const resolvers = {
       return User.findOne({ phoneNumber })
         .select('-__v -password')
     },
-    jobs: async () => {
-      return Job.find().populate('customer')
+    reservations: async () => {
+      return Reservation.find().populate('customer')
     },
     checkoutSession: async (parent, args, context) => {
       const session = await createCheckoutSession(args.productName, args.unitAmount, args.quantity, context.headers.origin);
@@ -88,46 +88,46 @@ const resolvers = {
 
       throw new AuthenticationError('You need to be logged in!')
     },
-    addJob: async (parent, args, context) => { // tested successfully -BK
+    addReservation: async (parent, args, context) => { // tested successfully -BK
       if (context.user) {
-        const job = await Job.create({...args, customer: args.userId})
-        const jobPlusCustomer = Job.findOneAndUpdate( 
-          { _id: job.id } ,
+        const reservation = await Reservation.create({...args, customer: args.userId})
+        const reservationPlusCustomer = Reservation.findOneAndUpdate( 
+          { _id: reservation.id } ,
           { $push: { customer: args.userId }})
           .populate('customer');
-        const jobPlusPackage = await Job.findOneAndUpdate(
-          { _id: job.id },
+        const reservationPlusPackage = await Reservation.findOneAndUpdate(
+          { _id: reservation.id },
           { $push: { package: {title: args.title, imageUrl: args.imageUrl, cost: args.cost, description: args.description }}}
         );
-        const updatedJob = await Job.findOneAndUpdate(
-          { _id: job.id },
+        const updatedReservation = await Reservation.findOneAndUpdate(
+          { _id: Reservation.id },
           { $push: { hotel: {name: args.name, street1: args.street1, city: args.city, state: args.state, zip: args.zip }}}
         ).populate('customer');
-        return updatedJob;
+        return updatedReservation;
       }
 
       throw new AuthenticationError('You need to be logged in!');
     },
-    updateJob: async (parent, args, context) => { // tested successfully -BK
+    updateReservation: async (parent, args, context) => { // tested successfully -BK
       if (context.user) {
 
-        const job = await Job.findOneAndUpdate(
-          { _id: args.jobId },
+        const reservation = await Reservation.findOneAndUpdate(
+          { _id: args.reservationId },
           { checkIn: args.checkIn, claimedAt: args.claimedAt, confirmationKey: args.confirmationKey, instructions: args.instructions },
           { new: true }
         );
 
-        return job;
+        return reservation;
       }
 
       throw new AuthenticationError('You need to be logged in!');
     },
-    removeJob: async (parent, args, context) => { // tested successfully -BK
+    removeReservation: async (parent, args, context) => { // tested successfully -BK
       if (context.user) {
         
-        const job = Job.findOneAndRemove({ _id: args.jobId });
+        const reservation = Reservation.findOneAndRemove({ _id: args.reservationId });
 
-        return job;
+        return reservation;
       }
 
       throw new AuthenticationError('You need to be logged in!');

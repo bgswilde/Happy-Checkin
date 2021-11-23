@@ -4,7 +4,7 @@ const PackageSchema = require('./Package');
 const HotelSchema = require('./Hotel');
 const { dateFormater } = require('../utils/dateFormat');
 
-const JobSchema = new Schema(
+const ReservationSchema = new Schema(
   {
     createdAt: {
         type: Date,
@@ -51,7 +51,7 @@ const JobSchema = new Schema(
   }
 );
 
-JobSchema.virtual('status').get(function() {
+ReservationSchema.virtual('status').get(function() {
     if (!this.claimedAt && !this.completedAt) {
         return ''
     } else if (!this.completedAt) {
@@ -61,6 +61,6 @@ JobSchema.virtual('status').get(function() {
     }
 })
 
-const Job = model('Job', JobSchema)
+const Reservation = model('Reservation', ReservationSchema)
 
-module.exports = Job;
+module.exports = Reservation;
