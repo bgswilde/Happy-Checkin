@@ -17,6 +17,7 @@ query {
         phoneNumber
       }
       hotel {
+        name
         street1
         street2
         city

@@ -45,7 +45,7 @@ export const UPDATE_USER = gql`
 `
 
 export const ADD_JOB = gql`
-    mutation($userId: String!, $checkIn: String!, $confirmationKey: String!, $name: String!, $street1: String!, $city: String!, $state: String!, $zip: Int!, $title: String!, $imageUrl: String!, $cost: Int!) {
+    mutation($userId: ID!, $checkIn: String!, $confirmationKey: String!, $name: String!, $street1: String!, $city: String!, $state: String!, $zip: Int!, $title: String!, $imageUrl: String!, $cost: Int!) {
         addJob(userId: $userId, checkIn: $checkIn, confirmationKey: $confirmationKey, name: $name, street1: $street1, city: $city, state: $state, zip: $zip, title: $title, imageUrl: $imageUrl, cost: $cost) {
             createdAt
             checkIn

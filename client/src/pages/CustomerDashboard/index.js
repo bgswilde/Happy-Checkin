@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useQuery } from '@apollo/client';
+import { QUERY_JOBS } from '../../utils/queries';
 import { Button, Collapse, Card, CardBody, Modal, ModalBody, ModalHeader, ModalFooter } from 'reactstrap';
 import './index.css'
 
@@ -19,6 +21,14 @@ function CustomerDashboard () {
     window.location.assign('/reservation');
   }
 
+  const { data } = useQuery(QUERY_JOBS);
+
+  const jobs = data?.jobs || []
+
+  if (!jobs.length) {
+    console.log(jobs);
+  }
+  console.log(jobs)
   return (
   <main>
     <div className="add-reserve">
@@ -27,20 +37,23 @@ function CustomerDashboard () {
   <section className="reserve-list">
     <div className="customer-list">
       <h2>Reservation List</h2>
-      <div>
+      {jobs && jobs.map(job => (
+      <div key={job._id}>
         <Button onClick={toggle}
         onBlur={handleBlur}
         className="btn-reservation-list">
-          This is where the basic information of the reservation goes
+          <p>{job.hotel[0].name}/{job.checkIn}/...Click for more</p>
         </Button>
         <Collapse isOpen={isOpen}>
           <Card className="customer-card">
             <CardBody>
-              <p>Expended it shows more detailed information of the reservation</p>
+              <p>{job.package[0].title} , {job.package[0].description}.  ${job.package[0].cost}</p>
             </CardBody>
           </Card>
         </Collapse>
       </div>
+    ))}
+      
     </div>
     <div className="customer-list">
       <h2>Pending Check-ins/Completed</h2>

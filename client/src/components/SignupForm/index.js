@@ -58,7 +58,7 @@ function SignupForm () {
             <Input type="lastName" name="lastName" id="lastName" placeholder="Enter your last name" onChange={handleChange} />
           </FormGroup>
           <FormGroup>
-            <Label for="phoneNumber">Phone Number (optional)</Label>
+            <Label for="phoneNumber">Phone Number (areacode first)</Label>
             <Input type="phoneNumber" name="phoneNumber" id="phoneNumber" placeholder="Phone number(area code first)" onChange={handleChange} />
           </FormGroup>
           <FormGroup>
