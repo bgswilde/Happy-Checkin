@@ -56,19 +56,19 @@ function SignupForm () {
         <p className="subtitle">You'll soon kiss checkin frustration goodbye...</p>
         <Form className="user-details" onSubmit={handleFormSubmit}>
           <Form.Group className="mb-3">
-            <Form.Label className="mb-0" for="firstName">First Name</Form.Label>
+            <Form.Label className="mb-0" htmlFor="firstName">First Name</Form.Label>
             <Form.Control type="text" name="firstName" id="firstName" placeholder="Enter your first name" onBlur={handleChange} />
           </Form.Group>
           <Form.Group className="mb-3">
-            <Form.Label className="mb-0" for="lastName">Last Name</Form.Label>
+            <Form.Label className="mb-0" htmlFor="lastName">Last Name</Form.Label>
             <Form.Control type="text" name="lastName" id="lastName" placeholder="Enter your last name" onBlur={handleChange} />
           </Form.Group>
           <Form.Group className="mb-3">
-            <Form.Label className="mb-0" for="phoneNumber">Phone Number</Form.Label>
+            <Form.Label className="mb-0" htmlFor="phoneNumber">Phone Number</Form.Label>
             <Form.Control type="text" name="phoneNumber" id="phoneNumber" placeholder="ex. 9876543210" onBlur={handleChange} />
           </Form.Group >
           <Form.Group className="mb-3">
-            <Form.Label className="mb-0" for="password">Password</Form.Label>
+            <Form.Label className="mb-0" htmlFor="password">Password</Form.Label>
             <Form.Control type="password" name="password" id="loginPassword" placeholder="At least 5 characters long" onBlur={handleChange} />
           </Form.Group>
           <Button className="submit-btn" color="info" type="submit">Register</Button>

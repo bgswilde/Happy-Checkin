@@ -31,15 +31,7 @@ function Header() {
         </Navbar.Collapse>
       </Container>
     </Navbar>
-
-    
   )
-  {/* {(loggedIn && user.role === 0) ? 
-          <CustomerDashboard /> :
-        (loggedIn && user.role === 1) ? 
-          <CheckerDashboard /> :
-          <LoginForm />
-        } */}
 }
 
 export default Header;

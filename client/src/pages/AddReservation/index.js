@@ -64,7 +64,7 @@ function AddReservation() {
       </Row>
       <Row className="justify-content-center">
         <Col sm="10" md="7" >
-          <ProgressBar class="progress" striped variant="warning" max="4" now={page} label={`STEP  ${page}`} />
+          <ProgressBar className="progress" striped variant="warning" max="4" now={page} label={`STEP  ${page}`} />
         </Col>
       </Row>
         {page === 1 && 
@@ -85,7 +85,7 @@ function AddReservation() {
             hotelData={hotelData}
             packageData={packageData}
           />}
-        {page === 2 || page === 4 && 
+        {(page === 2 || page === 4) && 
           <Button className="next-btn" onClick={goBack}>Go Back</Button>
         } 
         {page === 3 && 

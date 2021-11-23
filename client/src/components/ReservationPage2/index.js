@@ -20,27 +20,33 @@ function ReservationPage2(props) {
 		console.log(`I clicked the submit selections button`)
 		const name = event.target.name;
 		const value = event.target.value;
-		// if (form.checkValidity() === false) {
-		// 	event.preventDefault();
-		// 	event.stopPropagation();
-		// }
-		// setValidated(true);
+		
+
 		// record data from form to the state with the setHotelData prop function
 		setHotelData({
 			...hotelData,
 			[name]: value
 		})
-		console.log(`changing... ${hotelData}`)
   }
 
-	const submitFormData = () => {
-		Object.entries(hotelData).forEach(entry => {
-			const [key, value] = entry;
-			if (value === "on") {
-			hotelData.options.push(key)
-		}})
-		console.log(`The final data set to be submitted is ${JSON.stringify(hotelData)}`);
-		nextPage()
+	const submitFormData = (event) => {
+		const form = event.target;
+		let valid = form.checkValidity();
+    if (valid === false) {
+      event.preventDefault();
+      event.stopPropagation();
+			setValidated(true);
+    }
+    
+		if (valid === true) {
+			Object.entries(hotelData).forEach(entry => {
+				const [key, value] = entry;
+				if (value === "on") {
+				hotelData.options.push(key)
+			}})
+			console.log(`The final data set to be submitted is ${JSON.stringify(hotelData)}`);
+			nextPage()
+		}
 	}
 
 	return (
@@ -55,10 +61,11 @@ function ReservationPage2(props) {
 						correct hotel information and reservation number!
 					</p>
 				</Row>
-				<Form noValidate validated={validated} className="hotel-details" onSubmit={submitFormData}>
+				<Form className="hotel-details" noValidate validated={validated} onSubmit={submitFormData}>
 					<Form.Group controlId="hotelName" className="mb-3" >
 						<Form.Label className="mb-0">Hotel Name</Form.Label>
-						<Form.Control onBlur={handleFormData} name="hotelName" placeholder="Fancy Hotel" type="text" required />
+						<Form.Control required type="text" onBlur={handleFormData} name="hotelName" placeholder="Fancy Hotel"/>
+						<Form.Control.Feedback type="invalid">We need to know the hotel name!</Form.Control.Feedback>
 					</Form.Group>
 					<Form.Group controlId="hotelAddress1" className="mb-3">
 						<Form.Label className="mb-0">Hotel Address Line 1</Form.Label>
@@ -113,12 +120,13 @@ function ReservationPage2(props) {
 										name={option}
                     label={option}
 										onBlur={handleFormData}
+										key={option}
                   />
               ))}
             </Form.Group>
             <Form.Group as={Col} md="6" controlId="instructions" className="mb-3">
 					  	<Form.Label className="mb-0">Special Instructions</Form.Label>
-						  <Form.Control onBlur={handleFormData} name="instructions" as="textarea" rows="5" placeholder="We will try our best to handle your special requests!" required/>
+						  <Form.Control onBlur={handleFormData} name="instructions" as="textarea" rows="5" placeholder="We will try our best to handle your special requests!"/>
 	          </Form.Group>
           </Row>
           <Row className="justify-content-center">

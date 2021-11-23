@@ -58,11 +58,11 @@ function LoginForm () {
         <p className="subtitle">welcome back, my friend</p>
         <Form className="user-details" onSubmit={handleSubmit}>
           <Form.Group className="mb-3">
-            <Form.Label className="mb-0" for="phoneNumber">Phone Number</Form.Label>
+            <Form.Label className="mb-0" htmlFor="phoneNumber">Phone Number</Form.Label>
             <Form.Control type="text" name="phoneNumber" id="phoneNumber" placeholder="ex. 9876543210" onBlur={handleChange} />
           </Form.Group >
           <Form.Group className="mb-3">
-            <Form.Label className="mb-0" for="password">Password</Form.Label>
+            <Form.Label className="mb-0" htmlFor="password">Password</Form.Label>
             <Form.Control type="password" name="password" id="loginPassword" placeholder="password" onBlur={handleChange} />
           </Form.Group>
           <Button className="submit-btn" color="info" type="submit">Log In</Button>

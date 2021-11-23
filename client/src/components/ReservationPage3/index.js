@@ -54,7 +54,7 @@ function ReservationPage3(props) {
                 <ul className="data-details">
                   {hotelData.options.map((option) => {
                     return (
-                      <li className="list-item">{option}</li>
+                      <li className="list-item" key={option}>{option}</li>
                     )
                   })}
                 </ul>
