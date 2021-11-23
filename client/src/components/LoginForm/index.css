@@ -16,12 +16,12 @@
 
 .signup-link {
     text-decoration: none;
-    margin-bottom: 2rem;
+    margin-bottom: 20px;
     width: fit-content;
     justify-content: center;
     height: fit-content;
     align-self: center;
-    color: rgb(246,189,96);
+    color: var(--accent-orange);
 }
 
 Button {

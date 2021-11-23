@@ -58,7 +58,12 @@ function AddReservation() {
   return (
     <Container>
       <Row className="justify-content-center">
-        <Col sm="5" >
+        <Col sm="8" >
+          <h1 className="title">Add a Reservation</h1>
+        </Col>
+      </Row>
+      <Row className="justify-content-center">
+        <Col sm="10" md="7" >
           <ProgressBar class="progress" striped variant="warning" max="4" now={page} label={`STEP  ${page}`} />
         </Col>
       </Row>
