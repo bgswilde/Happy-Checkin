@@ -1,0 +1,32 @@
+.active-card {
+  background-color: white;
+  border-radius: 0px 0px 7px 7px;
+  border-color: var(--secondary-yellow);
+}
+
+.unclaimed {
+  font-weight: 700;
+  color: var(--accent-orange);
+}
+.claimed {
+  font-weight: 700;
+  color: var(--success-green);
+}
+
+.btn-active-reservation {
+  background-color: white;
+  color: rgba(0, 0, 0);
+  border: black 2px solid;
+}
+
+.btn-active-reservation:hover {
+  background-color: var(--secondary-yellow);
+  color: var(--base-grey);
+  border-color: white;
+}
+
+.btn-active-reservation:focus {
+  background-color: var(--secondary-yellow);
+  color: var(--base-grey);
+  border-color: white;
+}

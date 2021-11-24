@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Container, Row, Col, Button, Collapse, Card,  Modal } from 'react-bootstrap';
+import CardCustomerCompleted from '../../components/CardCustomerCompleted';
+import CardCustomerActive from '../../components/CardCustomerActive';
 import './index.css'
 
 function CustomerDashboard () {
@@ -49,87 +51,22 @@ function CustomerDashboard () {
     <Row className="mt-5">
       <Col md="6" className="active-list">
         <h2>Active Reservations</h2>
-        <div className="mx-2 my-3">
-          <Button 
-            onClick={() => setOpen(!open)}
-            onBlur={() => setOpen(!open)}
-            aria-controls="collapse-me"
-            aria-expanded={open}
-            className="btn-active-reservation w-100"
-          >
-            This is where the basic information of the reservation goes
-          </Button>
-          <Collapse in={open}>
-            <Card className="customer-card" id="collapse-me">
-              <Card.Body id="collapse-me">
-                <p>Expended it shows more detailed information of the reservation</p>
-              </Card.Body>
-            </Card>
-          </Collapse>
-        </div>
-
-        <div className="mx-2 my-3">
-          <Button 
-            onClick={() => setOpen(!open)}
-            onBlur={() => setOpen(!open)}
-            aria-controls="collapse-me2"
-            aria-expanded={open}
-            className="btn-active-reservation w-100"
-          >
-            This is where the basic information of the reservation goes
-          </Button>
-          <Collapse in={open}>
-            <Card className="customer-card" id="collapse-me">
-              <Card.Body id="collapse-me2">
-                <p>Expended it shows more detailed information of the reservation</p>
-              </Card.Body>
-            </Card>
-          </Collapse>
-        </div>
-
+        {/* map out jobs for all jobs by user id and not completed */}
+        <CardCustomerActive 
+          open={open}
+          setOpen={setOpen}
+        />
       </Col>
       
       <Col md="1"></Col>
       
       <Col md="5" className="ml-3 completed-list">
+        {/* map out jobs for all jobs by user id and completed */}
         <h2>Completed Reservations</h2>
-        <div className="mx-2 my-3">
-          <Button 
-            onClick={() => setOpen(!open)}
-            onBlur={() => setOpen(!open)}
-            aria-controls="collapse-me2"
-            aria-expanded={open}
-            className="btn-completed-reservation w-100"
-          >
-            This is where the basic information of the reservation goes
-          </Button>
-          <Collapse in={open}>
-            <Card className="completed-card" id="collapse-me">
-              <Card.Body id="collapse-me2">
-                <p>Expended it shows more detailed information of the reservation</p>
-              </Card.Body>
-            </Card>
-          </Collapse>
-        </div>
-        
-        {/* <div className="completed-area">
-          <Button className="completed-modal" onClick={modalToggle}>
-            Your completed reservation for review!
-          </Button>
-          <Modal isOpen={modal}>
-            <Modal.Header toggle={modalToggle}>
-              The Reservation
-            </Modal.Header>
-            <Modal.Body>
-              something about it being completed
-            </Modal.Body>
-            <Modal.Footer>
-              <Button onClick={function noRefCheck(){}}>Leave a review</Button>
-              {' '}
-              <Button onClick={function noRefCheck(){}}>Clear Res</Button>
-            </Modal.Footer>
-          </Modal>
-        </div> */}
+        <CardCustomerCompleted 
+          open={open}
+          setOpen={setOpen}
+        />
       </Col>
     </Row>
   </Container>
