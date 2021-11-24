@@ -1,11 +1,21 @@
-.add-reserve {
-    display: flex;
-    width: fit-content;
-    margin-bottom: 2rem;
-    justify-content: flex-end;
-    margin-left: 40%;
+.dash-details {
+    text-align: left;
+    margin: 20px;
 }
 
+.dash-first {
+    font-weight: 600;
+}
+
+.dash-active {
+    font-weight: 800;
+    color: var(--secondary-yellow);
+}
+
+.dash-completed {
+    font-weight: 800;
+    color: var(--primary-red);
+}
 .add-btn {
     background-image: linear-gradient(45deg, #FA8BFF 0%, #2BD2FF 52%, #2BFF88 90%);
     background-color: #FA8BFF;
@@ -19,33 +29,58 @@
     background-position: 1px -50px;
 }
 
-.reserve-list {
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: nowrap;
-    width: 100vw;
+.active-list {
+    border: 2px solid white;
+    border-radius: 7px;
+    background: rgba(84, 84, 84, 0.8);
+    box-shadow: 0 0 6px 2px var(--secondary-yellow);
+    min-height: 300px;
+    margin-bottom: 20px;
 }
 
-.customer-list {
-    width: 600px;
+.active-list h2 {
+    color: var(--secondary-yellow);
+    margin: 15px auto;
+    text-shadow: 0px 0px 9px rgba(0, 0, 0, 0.8);
 }
 
-.customer-card {
-    background-color: var(--accent-orange);
-    opacity: 0.6;
-    border-radius: 4px;
+.completed-list {
+    border: 2px solid white;
+    border-radius: 7px;
+    background: rgba(194, 194, 194, 0.8);
+    box-shadow: 0 0 6px 2px rgba(247, 63, 63, 0.728);
+    margin-bottom: 20px;
 }
 
-.customer-card p {
-    font-size: 10px;
+.completed-list h2 {
+    color: var(--base-grey);
+    margin: 15px auto;
+    text-shadow: 0px 0px 4px rgba(255, 255, 255, 0.8);
 }
 
-.btn-reservation-list {
-    background-color: var(--alt-base-grey);
+.active-card {
+    background-color: white;
+    border-radius: 0px 0px 7px 7px;
+    border-color: var(--secondary-yellow);
 }
 
-.btn-reservation-list:hover {
-    background-color: var(--alt-base-grey);
+
+.btn-active-reservation {
+    background-color: white;
+    color: rgba(0, 0, 0);
+    border: black 2px solid;
+}
+
+.btn-active-reservation:hover {
+    background-color: var(--secondary-yellow);
+    color: var(--base-grey);
+    border-color: white;
+}
+
+.btn-active-reservation:focus {
+    background-color: var(--secondary-yellow);
+    color: var(--base-grey);
+    border-color: white;
 }
 
 .btn-pending-list {
@@ -60,6 +95,28 @@
     background-color: var(--secondary-yellow);
 }
 
+.completed-card {
+    background-color: white;
+    border-radius: 0px 0px 7px 7px;
+    border-color: var(--primary-red);
+}
+.btn-completed-reservation {
+    background-color: white;
+    color: rgba(0, 0, 0);
+    border: black 2px solid;
+}
+
+.btn-completed-reservation:hover {
+    background-color: var(--primary-red);
+    color: white;
+    border-color: white;
+}
+
+.btn-completed-reservation:focus {
+    background-color: var(--primary-red);
+    color: white;
+    border-color: white;
+}
 .completed-area {
     padding-top: 4rem;
 }
