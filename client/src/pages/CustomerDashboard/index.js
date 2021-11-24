@@ -16,16 +16,20 @@ function CustomerDashboard () {
     }
   });
 
-  // user.displayName
   const displayName = Auth.getDisplayName();
 
   if (!customerLoading && customerData?.reservations) {
     activeReservations.current = customerData.reservations.filter(r => r.status === '');
     completeReservations.current = customerData.reservations.filter(r => r.status === 'completed');
   }
-  
-  
 
+  useEffect(()=> {
+    if (!customerLoading && customerData?.reservations) {
+      activeReservations.current = customerData.reservations.filter(r => r.status === '');
+      completeReservations.current = customerData.reservations.filter(r => r.status === 'completed');
+    }
+  }, [customerData])
+  
   return (
     <Container className="dashboard customer">
        <Row className="dashboard welcome justify-content-center">

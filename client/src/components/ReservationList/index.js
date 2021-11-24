@@ -11,7 +11,8 @@ const ReservationList = (props) => {
         props.reservations && (
           props.reservations.map((r) => ( // iterate over passed in reservations
             <ReservationItem 
-              {...r} // spread reservation props
+              key={r._id}
+              {...r } // spread reservation props
             />
           ))
         )

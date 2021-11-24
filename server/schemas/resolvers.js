@@ -26,7 +26,6 @@ const resolvers = {
         .select('-__v -password')
     },
     reservations: async (parent, args, context) => {
-      console.log('reservations', args)
       return Reservation.find({customer: {_id: args.userId}})
         .populate('customer')
         .populate('checker');
@@ -34,7 +33,7 @@ const resolvers = {
     },
     checkoutSession: async (parent, args, context) => {
       const session = await createCheckoutSession(args.productName, args.unitAmount, args.quantity, context.headers.origin);
-      console.log('checkoutSession', session)
+      // console.log('checkoutSession', session)
       return session;
     },
     config: async (parent, args, context) => {
