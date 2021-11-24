@@ -1,5 +1,6 @@
 import React from 'react';
 import { Navbar, Container, Nav } from 'react-bootstrap';
+import Auth from '../../utils/auth';
 
 function Header() {
   return (
@@ -26,7 +27,7 @@ function Header() {
             <Nav.Link href="/signup">Sign Up</Nav.Link>
             {/* To be rendered if logged in */}
             <Nav.Link href="/reservation">Reservations</Nav.Link>
-            {/* <Nav.Link onClick={logout}>Logout</Nav.Link> */}
+            <Nav.Link onClick={Auth.logout()}>Logout</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
