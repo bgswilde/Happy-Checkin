@@ -20,7 +20,6 @@ const resolvers = {
       return await User.find({})
         .select('-__v -password')
     },
-
     user: async (parent, { phoneNumber }) => { // successful
       return User.findOne({ phoneNumber })
         .select('-__v -password')
@@ -30,6 +29,10 @@ const resolvers = {
         .populate('customer')
         .populate('checker');
       // return Reservation.find().populate('customer')
+    },
+    allReservations: async () => { // successful
+      return await Reservation.find({})
+        .populate('customer')
     },
     checkoutSession: async (parent, args, context) => {
       const session = await createCheckoutSession(args.productName, args.unitAmount, args.quantity, context.headers.origin);

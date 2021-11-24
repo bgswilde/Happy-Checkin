@@ -62,6 +62,38 @@ query ($userId: String!){
   }
 `;
 
+export const QUERY_ALL_RESERVATIONS = gql`
+query {
+    reservations {
+      _id
+      createdAt
+      claimedAt
+      completedAt
+      instructions
+      package {
+          cost
+          description
+          imageUrl
+          title
+      }
+      customer {
+        displayName
+        phoneNumber
+      }
+      hotel {
+        name
+        street1
+        street2
+        city
+        state
+        zip
+      }
+      checkIn
+      status
+    }
+  }
+`;
+
 export const QUERY_USERS = gql`
   query {
     users {

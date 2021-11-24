@@ -69,6 +69,7 @@ const typeDefs = gql`
     user(phoneNumber: String!): User
     users: [User]
     reservations(userId: String!): [Reservation]
+    allReservations: [Reservation]
     checkoutSession(productName: String!, unitAmount: Int!, quantity: Int!): CheckoutSession
     config: Config
   }
