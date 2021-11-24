@@ -43,16 +43,8 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
-try {
-  db.once('open', () => {
-    app.listen(PORT, () => {
-      console.log(`API server running on port ${PORT}!`);
-    });
+db.once('open', () => {
+  app.listen(PORT, () => {
+    console.log(`API server running on port ${PORT}!`);
   });
-} catch (e) {
-  console.log('startUp ERROR', {
-    error: e,
-    db: db,
-    app: app
-  });
-}
+});
