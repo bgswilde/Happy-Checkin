@@ -23,7 +23,7 @@ function CustomerDashboard () {
   }
   const { data, loading } =  useQuery(QUERY_JOBS);
 
-  const jobsMe = data?.jobs.customer._id || []
+  const jobs = data?.jobs.customer._id || []
   const me = Auth.getProfile()
   
   return (
