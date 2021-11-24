@@ -1,6 +1,6 @@
 # Happy Checkin ![happy checkin badge](https://img.shields.io/badge/HappyCheckin-simple-red)
 ![GitHub](https://img.shields.io/github/license/bgswilde/Happy-Checkin?style=plastic) ![GitHub issues](https://img.shields.io/github/issues/bgswilde/Happy-Checkin?style=plastic)
-![Happy checkin logo](assets/images/hc3.png)
+![Happy checkin logo](client/public/assets/images/hc3.png)
 
 ## Description
 Happy Checkin is a service that takes the inconveniences out of the hotel check-in experience while offering add-ons that enhance the hotel arrival experience.  Flight delay? Special Request? Or just prefer to skip a check in process and head straight to your room.
@@ -15,10 +15,19 @@ npm install
 This will install all dependencies.  Look at the [Badges](#badges) section to see a more detailed list of the dependencies
 
 ## Contributors
-[Brian W](https://github.com/bgswilde)
-[William H](https://github.com/Will2tall)
-[Brian K]()
-[Will K](https://github.com/wfknowles)
+[Brian W Github Profile](https://github.com/bgswilde)
+
+---
+
+[William H Github Profile](https://github.com/Will2tall)
+
+---
+
+[Brian K Github Profile]()
+
+---
+
+[Will K Github Profile](https://github.com/wfknowles)
 
 ## License
 MIT License
