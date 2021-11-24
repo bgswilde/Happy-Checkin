@@ -24,10 +24,6 @@
     color: var(--accent-orange);
 }
 
-Button {
-    color: rgb(1,79,134)
-}
-
 .submit-btn:hover {
     box-shadow: 2px 2px #1d1919a1;
 }

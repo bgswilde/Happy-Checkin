@@ -16,6 +16,7 @@
     font-weight: 800;
     color: var(--primary-red);
 }
+
 .add-btn {
     background-image: linear-gradient(45deg, #FA8BFF 0%, #2BD2FF 52%, #2BFF88 90%);
     background-color: #FA8BFF;
@@ -27,6 +28,14 @@
 
 .add-btn:hover {
     background-position: 1px -50px;
+}
+
+.customer-card {
+    text-align: left;
+}
+  
+.customer-card p {
+    margin: 5px;
 }
 
 .active-list {
@@ -56,31 +65,6 @@
     color: var(--base-grey);
     margin: 15px auto;
     text-shadow: 0px 0px 4px rgba(255, 255, 255, 0.8);
-}
-
-.active-card {
-    background-color: white;
-    border-radius: 0px 0px 7px 7px;
-    border-color: var(--secondary-yellow);
-}
-
-
-.btn-active-reservation {
-    background-color: white;
-    color: rgba(0, 0, 0);
-    border: black 2px solid;
-}
-
-.btn-active-reservation:hover {
-    background-color: var(--secondary-yellow);
-    color: var(--base-grey);
-    border-color: white;
-}
-
-.btn-active-reservation:focus {
-    background-color: var(--secondary-yellow);
-    color: var(--base-grey);
-    border-color: white;
 }
 
 .btn-pending-list {

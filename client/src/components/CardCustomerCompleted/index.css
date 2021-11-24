@@ -1,0 +1,29 @@
+.active-card {
+  background-color: white;
+  border-radius: 0px 0px 7px 7px;
+  border-color: var(--secondary-yellow);
+}
+
+.completed {
+  font-weight: 700;
+  color: var(--alt-base-grey);
+  
+}
+
+.btn-completed-reservation {
+  background-color: white;
+  color: rgba(0, 0, 0);
+  border: black 2px solid;
+}
+
+.btn-completed-reservation:hover {
+  background-color: var(--secondary-yellow);
+  color: var(--base-grey);
+  border-color: white;
+}
+
+.btn-completed-reservation:focus {
+  background-color: var(--secondary-yellow);
+  color: var(--base-grey);
+  border-color: white;
+}
