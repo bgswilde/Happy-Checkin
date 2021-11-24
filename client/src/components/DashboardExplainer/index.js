@@ -3,7 +3,7 @@ import { Row, Col, Button } from 'react-bootstrap';
 
 const DashboardExplainer = () => {
   const Reservation = () => {
-
+    return;
   }
 
   return (
@@ -15,7 +15,7 @@ const DashboardExplainer = () => {
         <p className="dash-details"><span className="dash-first">When</span> a Checker has checked you in, you can see your history and leave feedback in the <span className="dash-completed">Completed Reservations</span> group.</p>
         <p className="dash-details"><span className="dash-first">If your</span> Checker has checked you in, skip the line at your hotel desk, get your keys immediately, and enjoy a happy stay!</p>
         <div>
-          <Button block size="lg" className="add-btn mb-3" onClick={Reservation}>Add A New Reservation!</Button>
+          {/* THIS IS THROWING AN ERROR <Button block size="lg" className="add-btn mb-3" onClick={Reservation}>Add A New Reservation!</Button> */}
         </div>
       </Col>
     </Row>

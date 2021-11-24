@@ -1,35 +1,20 @@
-import { isValidObjectId } from "mongoose";
 import React from "react";
 import { Row } from 'react-bootstrap';
 import ReservationItem from '../../components/ReservationItem';
 
 const ReservationList = (props) => {
-  console.log('ReservationList', {
-    title: props.title,
-    reservations: props.reservations,
-    klass: props.klass
-  })
-
-  function randomKey() {
-    var dt = new Date().getTime();
-    var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-        var r = (dt + Math.random()*16)%16 | 0;
-        dt = Math.floor(dt/16);
-        return (c=='x' ? r :(r&0x3|0x8)).toString(16);
-    });
-    console.log('key', uuid);
-    return uuid;
-  }
-
+  // console.log('ReservationList', {...props})
   return (
     <Row className={props.klass}>
       <h2>{props.title}</h2>
-      {
-        props.reservations.map((r) => (
+      { 
+        props.reservations && (
+          props.reservations.map((r) => ( // iterate over passed in reservations
             <ReservationItem 
-              {...r}
+              {...r} // spread reservation props
             />
-        ))
+          ))
+        )
       }
     </Row>
   );

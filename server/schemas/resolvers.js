@@ -17,7 +17,7 @@ const resolvers = {
       throw new AuthenticationError('Not logged in');
     },
     users: async () => { // successful
-      return User.find()
+      return await User.find({})
         .select('-__v -password')
     },
 
@@ -25,8 +25,12 @@ const resolvers = {
       return User.findOne({ phoneNumber })
         .select('-__v -password')
     },
-    reservations: async () => {
-      return Reservation.find().populate('customer')
+    reservations: async (parent, args, context) => {
+      console.log('reservations', args)
+      return Reservation.find({customer: {_id: args.userId}})
+        .populate('customer')
+        .populate('checker');
+      // return Reservation.find().populate('customer')
     },
     checkoutSession: async (parent, args, context) => {
       const session = await createCheckoutSession(args.productName, args.unitAmount, args.quantity, context.headers.origin);
@@ -53,6 +57,7 @@ const resolvers = {
       }
 
       const token = signToken(user);
+
       return { token, user };
     },
     addUser: async (parent, args) => { // tested successfully -BK

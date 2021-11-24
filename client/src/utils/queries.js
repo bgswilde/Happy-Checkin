@@ -28,6 +28,39 @@ query {
   }
 `;
 
+
+export const QUERY_RESERVATIONS = gql`
+query ($userId: String!){
+    reservations (userId: $userId){
+      _id
+      createdAt
+      claimedAt
+      completedAt
+      instructions
+      package {
+          cost
+          description
+          imageUrl
+          title
+      }
+      customer {
+        displayName
+        phoneNumber
+      }
+      hotel {
+        name
+        street1
+        street2
+        city
+        state
+        zip
+      }
+      checkIn
+      status
+    }
+  }
+`;
+
 export const QUERY_USERS = gql`
   query {
     users {

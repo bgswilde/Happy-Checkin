@@ -12,16 +12,19 @@ const typeDefs = gql`
 
   type Reservation {
     _id: ID
+    customerId: String
+    checkerId: String
     createdAt: String
     claimedAt: String
     completedAt: String
     checkIn: String
     instructions: String
-    customer: [User]
-    checker: [User]
-    package: [Package]
-    hotel: [Hotel]
-    feedback: [Feedback]
+    customer: User
+    checker: User
+    package: Package
+    hotel: Hotel
+    feedback: Feedback
+    status: String
   }
 
   type Package {
@@ -34,6 +37,7 @@ const typeDefs = gql`
 
   type Hotel {
     _id: ID
+    name: String
     street1: String
     street2: String
     city: String
@@ -64,7 +68,7 @@ const typeDefs = gql`
     me: User
     user(phoneNumber: String!): User
     users: [User]
-    reservations: [Reservation]
+    reservations(userId: String!): [Reservation]
     checkoutSession(productName: String!, unitAmount: Int!, quantity: Int!): CheckoutSession
     config: Config
   }
