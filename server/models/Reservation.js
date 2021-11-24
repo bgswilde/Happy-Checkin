@@ -69,6 +69,6 @@ ReservationSchema.virtual('status').get(function() {
     }
 })
 
-const Job = mongoose.model('Job', JobSchema)
+const Reservation = mongoose.model('Reservation', ReservationSchema)
 
 module.exports = Reservation;

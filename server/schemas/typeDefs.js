@@ -80,9 +80,9 @@ const typeDefs = gql`
     updateUser(role: Int, phoneNumber: String, firstName: String, lastName: String, password: String): Auth
     removeUser(userId: ID): User
     
-    addJob(userId: ID!, checkIn: String!, confirmationKey: String!, name: String!, street1: String!, street2: String, city: String!, state: String!, zip: Int!, title: String!, imageUrl: String!, cost: Int!, description: String ): Job
-    updateJob(jobId: ID!, checkIn: String, claimedAt: String, completedAt: String, confirmationKey: String, instructions: String ): Job
-    removeJob(jobId: ID!): Job
+    addReservation(userId: ID!, checkIn: String!, confirmationKey: String!, name: String!, street1: String!, street2: String, city: String!, state: String!, zip: Int!, title: String!, imageUrl: String!, cost: Int!, description: String ): Reservation
+    updateReservation(jobId: ID!, checkIn: String, claimedAt: String, completedAt: String, confirmationKey: String, instructions: String ): Reservation
+    removeReservation(jobId: ID!): Reservation
     
   }
 

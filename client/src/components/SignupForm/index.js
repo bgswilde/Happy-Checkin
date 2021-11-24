@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth'
-import { Container, Col, Row, Form, Button } from 'react-bootstrap';
+import { Container, Col, Row, Form, Button, FormGroup } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './index.css';
 
@@ -49,23 +49,23 @@ function SignupForm () {
 
   return(
     <Container className="log-container">
-      <div className="form-card">
+      <Col className="form-card">
         <Form onSubmit={handleFormSubmit}>
           <FormGroup>
-            <Label for="firstName">First Name</Label>
-            <Input type="firstName" name="firstName" id="firstName" placeholder="Enter your first name" onChange={handleChange} />
+            <label for="firstName">First Name</label>
+            <input type="firstName" name="firstName" id="firstName" placeholder="Enter your first name" onChange={handleChange} />
           </FormGroup>
           <FormGroup>
-            <Label for="lastName">Last Name</Label>
-            <Input type="lastName" name="lastName" id="lastName" placeholder="Enter your last name" onChange={handleChange} />
+            <label for="lastName">Last Name</label>
+            <input type="lastName" name="lastName" id="lastName" placeholder="Enter your last name" onChange={handleChange} />
           </FormGroup>
           <FormGroup>
-            <Label for="phoneNumber">Phone Number (areacode first)</Label>
-            <Input type="phoneNumber" name="phoneNumber" id="phoneNumber" placeholder="Phone number(area code first)" onChange={handleChange} />
+            <label for="phoneNumber">Phone Number (areacode first)</label>
+            <input type="phoneNumber" name="phoneNumber" id="phoneNumber" placeholder="Phone number(area code first)" onChange={handleChange} />
           </FormGroup>
           <FormGroup>
-            <Label for="password">Password</Label>
-            <Input type="password" name="password" id="loginPassword" placeholder="At least 5 characters long" onChange={handleChange} />
+            <label for="password">Password</label>
+            <input type="password" name="password" id="loginPassword" placeholder="At least 5 characters long" onChange={handleChange} />
           </FormGroup>
           <Button className="submit-btn" color="info" type="submit">Register</Button>
         </Form>
