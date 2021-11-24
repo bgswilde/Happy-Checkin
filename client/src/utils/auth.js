@@ -5,6 +5,16 @@ class Auth {
         return decode(this.getToken());
     }
 
+    getID() {
+        const auth = this.getProfile();
+        return auth.data._id;
+    }
+
+    getDisplayName() {
+        const auth = this.getProfile();
+        return `${auth.data.firstName} ${auth.data.lastName}`;
+    }
+
     getToken() {
         return localStorage.getItem('id_token');
     }
@@ -12,6 +22,17 @@ class Auth {
     loggedIn() {
         const token = this.getToken();
         return !!token && !this.isTokenExpired(token);
+    }
+
+    isTokenExpired(token) {
+        try {
+          const decoded = decode(token);
+          if (decoded.exp < Date.now() / 1000) {
+            return true;
+          } else return false;
+        } catch (err) {
+          return false;
+        }
     }
 
     tokenExpired(token) {
