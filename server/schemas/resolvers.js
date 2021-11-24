@@ -17,20 +17,26 @@ const resolvers = {
       throw new AuthenticationError('Not logged in');
     },
     users: async () => { // successful
-      return User.find()
+      return await User.find({})
         .select('-__v -password')
     },
-
     user: async (parent, { phoneNumber }) => { // successful
       return User.findOne({ phoneNumber })
         .select('-__v -password')
     },
-    reservations: async () => {
-      return Reservation.find().populate('customer')
+    reservations: async (parent, args, context) => {
+      return Reservation.find({customer: {_id: args.userId}})
+        .populate('customer')
+        .populate('checker');
+      // return Reservation.find().populate('customer')
+    },
+    allReservations: async () => { // successful
+      return await Reservation.find({})
+        .populate('customer')
     },
     checkoutSession: async (parent, args, context) => {
       const session = await createCheckoutSession(args.productName, args.unitAmount, args.quantity, context.headers.origin);
-      console.log('checkoutSession', session)
+      // console.log('checkoutSession', session)
       return session;
     },
     config: async (parent, args, context) => {
@@ -53,6 +59,7 @@ const resolvers = {
       }
 
       const token = signToken(user);
+
       return { token, user };
     },
     addUser: async (parent, args) => { // tested successfully -BK

@@ -3,7 +3,7 @@ import { Row, Col, Button } from 'react-bootstrap';
 
 const DashboardExplainer = () => {
   const Reservation = () => {
-
+    window.location.assign('/reservation');
   }
 
   return (

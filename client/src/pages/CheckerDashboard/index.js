@@ -1,66 +1,49 @@
-import React, { useState } from 'react';
-import { Button, Modal, ModalBody, ModalFooter, ModalHeader} from 'reactstrap';
-import './index.css'
+import React, { useEffect, useRef } from 'react';
+import { QUERY_ALL_RESERVATIONS } from "../../utils/queries";
 import { useQuery } from '@apollo/client';
-import { QUERY_JOBS } from '../../utils/queries';
+import { Container, Row, Col } from 'react-bootstrap';
+import DashboardExplainerChecker from '../../components/DashboardExplainerChecker';
+import ReservationList from '../../components/ReservationList';
+import Auth from '../../utils/auth';
+import './index.css'
 
-function CheckerDashboard ({ reservations }) {
-    const [modal1, setModal1] = useState(false);
-    const modalToggle1 = () => setModal1(!modal1);
+function CheckerDashboard () {
+  const unclaimedReservations = useRef();
+  const completeReservations = useRef();
+  const { loading: reservationsLoading, data: reservationData } = useQuery(QUERY_ALL_RESERVATIONS, {});
 
-    const [modal, setModal] = useState(false);
-    const modalToggle = () => setModal(!modal);
+  const displayName = Auth.getDisplayName();
 
-    const { loading, data } = useQuery(QUERY_JOBS);
-    const jobs = data?.jobs || [];
-    console.log(jobs);
+  if (!reservationsLoading && reservationData?.reservations) {
+    unclaimedReservations.current = reservationData.reservations.filter(r => r.checker._id !== undefined);
+    completeReservations.current = reservationData.reservations.filter(r => r.status === 'completed');
+  }
 
-    
-      if (!jobs.length) {
-        return <h3>No Jobs Yet</h3>;
-      } 
-      return (
-    <section className="checker-dashboard">
-      <div>
-        <h1>Reservation(s) to Claim</h1>
-        <div className="checker-res-claim">
-        <Button className="unclaimed" onClick={modalToggle}>
-          Reservation to claim
-        </Button>
-        <Modal isOpen={modal}>
-          <ModalHeader toggle={modalToggle}>
-            The Reservation
-          </ModalHeader>
-          <ModalBody>
-            the info you need
-          </ModalBody>
-          <ModalFooter>
-            <Button onClick={function noRefCheck(){}}>Accept</Button>
-          </ModalFooter>
-        </Modal>
-        </div>
-      </div>
-      <div>
-      <h1>To Be Completed</h1>
-        <div className="checker-pending">
-        <Button className="checker-claimed" onClick={modalToggle1}>
-          Reservation Pending completion
-        </Button>
-        <Modal isOpen={modal1}>
-          <ModalHeader toggle={modalToggle1}>
-            The Reservation
-          </ModalHeader>
-          <ModalBody>
-            Are you sure you want to let the customer know its completed
-          </ModalBody>
-          <ModalFooter>
-            <Button onClick={function noRefCheck(){}}>Complete</Button>
-          </ModalFooter>
-        </Modal>
-        </div>
-      </div>
-    </section>
-    )
+  useEffect(()=> {
+    if (!reservationsLoading && reservationData?.reservations) {
+      unclaimedReservations.current = reservationData.reservations.filter(r => r.checker._id !== undefined);
+      completeReservations.current = reservationData.reservations.filter(r => r.status === 'completed');
+    }
+  }, [reservationData])
+  
+  return (
+    <Container className="dashboard reservation">
+       <Row className="dashboard welcome justify-content-center">
+        <Col sm="8">
+          <h1 className="title">Checker {displayName}'s Dashboard</h1>
+        </Col>
+      </Row>
+      <DashboardExplainerChecker />
+      <Row>
+        <Col md="6">
+          <ReservationList title="Active Reservations" reservations={unclaimedReservations.current} klass="active-list"/>
+        </Col>
+        <Col md="6">
+          <ReservationList title="Reservation History" reservations={completeReservations.current} klass="completed-list"/>
+        </Col>
+      </Row>
+    </Container>
+  )
 }
 
 export default CheckerDashboard;

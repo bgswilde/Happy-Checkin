@@ -12,16 +12,19 @@ const typeDefs = gql`
 
   type Reservation {
     _id: ID
+    customerId: String
+    checkerId: String
     createdAt: String
     claimedAt: String
     completedAt: String
     checkIn: String
     instructions: String
-    customer: [User]
-    checker: [User]
-    package: [Package]
-    hotel: [Hotel]
-    feedback: [Feedback]
+    customer: User
+    checker: User
+    package: Package
+    hotel: Hotel
+    feedback: Feedback
+    status: String
   }
 
   type Package {
@@ -34,6 +37,7 @@ const typeDefs = gql`
 
   type Hotel {
     _id: ID
+    name: String
     street1: String
     street2: String
     city: String
@@ -64,7 +68,8 @@ const typeDefs = gql`
     me: User
     user(phoneNumber: String!): User
     users: [User]
-    reservations: [Reservation]
+    reservations(userId: String!): [Reservation]
+    allReservations: [Reservation]
     checkoutSession(productName: String!, unitAmount: Int!, quantity: Int!): CheckoutSession
     config: Config
   }
@@ -72,13 +77,13 @@ const typeDefs = gql`
   type Mutation {
     login(phoneNumber: String!, password: String!): Auth
 
-    addUser(phoneNumber: String!, firstName: String!, lastName: String!, password: String!): Auth
-    updateUser(role: Int, phoneNumber: String, firstName: String, lastName: String, password: String): User
+    addUser(role: Int!, phoneNumber: String!, firstName: String!, lastName: String!, password: String!, email: String!): User
+    updateUser(role: Int, phoneNumber: String, firstName: String, lastName: String, password: String): Auth
     removeUser(userId: ID): User
     
-    addReservation(userId: String!, checkIn: String!, confirmationKey: String!, name: String!, street1: String!, street2: String, city: String!, state: String!, zip: Int!, title: String!, imageUrl: String!, cost: Int!, description: String ): Reservation
-    updateReservation(reservationId: ID!, checkIn: String, claimedAt: String, completedAt: String, confirmationKey: String, instructions: String ): Reservation
-    removeReservation(reservationId: ID!): Reservation
+    addReservation(userId: ID!, checkIn: String!, confirmationKey: String!, name: String!, street1: String!, street2: String, city: String!, state: String!, zip: Int!, title: String!, imageUrl: String!, cost: Int!, description: String ): Reservation
+    updateReservation(jobId: ID!, checkIn: String, claimedAt: String, completedAt: String, confirmationKey: String, instructions: String ): Reservation
+    removeReservation(jobId: ID!): Reservation
     
   }
 

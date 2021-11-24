@@ -22,15 +22,14 @@ module.exports = {
     try {
       const { data } = jwt.verify(token, secret, { maxAge: expiration });
       req.user = data;
-      console.log(data)
     } catch (e){
       console.log('error', e);
     }
 
     return req;
   },
-  signToken: function({ phoneNumber, role, _id }) {
-    const payload = { phoneNumber, role, _id };
+  signToken: function({ phoneNumber, role, _id, firstName, lastName }) {
+    const payload = { phoneNumber, role, _id, firstName, lastName };
 
     return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
   }

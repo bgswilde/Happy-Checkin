@@ -1,15 +1,16 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import { Button, Collapse, Card } from 'react-bootstrap';
 
 function ReservationItem(props) {
-  const [open, setOpen] = useState(false);
+  // console.log('ReservationItem', {...props})
+  const [open, setOpen] = useState(false); // show/hide card
 
   return (
       <div className="reservation-wrapper col-md-4">
         <Button 
           onClick={() => setOpen(!open)}
           onBlur={() => setOpen(!open)}
-          aria-controls="collapse-me"
+          aria-controls="collapse-me" // matches Card.Body id
           aria-expanded={open}
           className="btn-active-reservation w-100"
         >
@@ -56,11 +57,11 @@ function ReservationItem(props) {
                 <span className="detail-title">
                   Options: 
                 </span>
-                <ul className="option-details">
+                {/* <ul className="option-details"> */}
                   {/* {props.options} */}
-                  <li>first option</li>
-                  <li>second option</li>
-                </ul>
+                  {/* <li>first option</li> */}
+                  {/* <li>second option</li> */}
+                {/* </ul> */}
               </p>
               <p className="instructions">
                 <span className="detail-title">Instructions: </span>

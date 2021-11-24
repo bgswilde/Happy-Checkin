@@ -1,11 +1,19 @@
-const { Schema, model, Types } = require('mongoose');
+const mongoose = require('mongoose')
+
+const { Schema, Types } = mongoose;
 const FeedbackSchema = require('./Feedback');
 const PackageSchema = require('./Package');
 const HotelSchema = require('./Hotel');
 const { dateFormater } = require('../utils/dateFormat');
 
 const ReservationSchema = new Schema(
-  {
+  { 
+    customerId: {
+        type: String
+    },
+    checkerId: {
+        type: String
+    },
     createdAt: {
         type: Date,
         default: Date.now,
@@ -19,17 +27,17 @@ const ReservationSchema = new Schema(
         type: Date,
         get: timestamp => dateFormater(timestamp)
     },
-    customer: [{
+    customer: {
         type: Schema.Types.ObjectId,
         ref: 'User'
-    }],
-    checker: [{
+    },
+    checker: {
         type: Schema.Types.ObjectId,
         ref: 'User'
-    }],
-    package: [PackageSchema],
-    hotel: [HotelSchema],
-    feedback: [FeedbackSchema],
+    },
+    package: PackageSchema,
+    hotel: HotelSchema,
+    feedback: FeedbackSchema,
 
     checkIn: {
         type: String
@@ -61,6 +69,6 @@ ReservationSchema.virtual('status').get(function() {
     }
 })
 
-const Reservation = model('Reservation', ReservationSchema)
+const Reservation = mongoose.model('Reservation', ReservationSchema)
 
 module.exports = Reservation;
