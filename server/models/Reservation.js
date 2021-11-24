@@ -1,4 +1,6 @@
-const { Schema, model, Types } = require('mongoose');
+const mongoose = require('mongoose')
+
+const { Schema, Types } = mongoose;
 const FeedbackSchema = require('./Feedback');
 const PackageSchema = require('./Package');
 const HotelSchema = require('./Hotel');
@@ -67,6 +69,6 @@ ReservationSchema.virtual('status').get(function() {
     }
 })
 
-const Reservation = model('Reservation', ReservationSchema)
+const Job = mongoose.model('Job', JobSchema)
 
 module.exports = Reservation;
