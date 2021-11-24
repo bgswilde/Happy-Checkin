@@ -13,6 +13,12 @@ query {
           title
       }
       customer {
+        _id
+        displayName
+        phoneNumber
+      }
+      checker {
+        _id
         displayName
         phoneNumber
       }

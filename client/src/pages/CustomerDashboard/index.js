@@ -3,6 +3,7 @@ import { useQuery } from '@apollo/client';
 import { QUERY_JOBS } from '../../utils/queries';
 import { Button, Collapse, Card, CardBody, Modal, ModalBody, ModalHeader, ModalFooter } from 'reactstrap';
 import './index.css'
+import Auth from '../../utils/auth';
 
 function CustomerDashboard () {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,15 +21,11 @@ function CustomerDashboard () {
   const Reservation = () => {
     window.location.assign('/reservation');
   }
+  const { data, loading } =  useQuery(QUERY_JOBS);
 
-  const { data } = useQuery(QUERY_JOBS);
-
-  const jobs = data?.jobs || []
-
-  if (!jobs.length) {
-    console.log(jobs);
-  }
-  console.log(jobs)
+  const jobsMe = data?.jobs.customer._id || []
+  const me = Auth.getProfile()
+  
   return (
   <main>
     <div className="add-reserve">
