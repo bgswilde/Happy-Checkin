@@ -67,7 +67,7 @@ function ReservationPage3(props) {
 
               <Row className="justify-content-center">
                 <Col sm="9" md="6" xl="4">
-                  <Stripe product_name={`${packageData.name}`} unit_amount={packageData.price.concat(00)} quantity={1} />
+                  <Stripe product_name={`${packageData.name}`} unit_amount={`${packageData.price}00`} quantity={1} />
                 </Col>
               </Row>
             </Col>
