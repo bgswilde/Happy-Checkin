@@ -64,36 +64,36 @@ function ReservationPage2(props) {
 				<Form className="hotel-details" noValidate validated={validated} onSubmit={submitFormData}>
 					<Form.Group controlId="hotelName" className="mb-3" >
 						<Form.Label className="mb-0">Hotel Name</Form.Label>
-						<Form.Control required type="text" onBlur={handleFormData} name="hotelName" placeholder="Fancy Hotel"/>
+						<Form.Control required type="text" onBlur={handleFormData} name="hotel.name" placeholder="Fancy Hotel"/>
 						<Form.Control.Feedback type="invalid">We need to know the hotel name!</Form.Control.Feedback>
 					</Form.Group>
 					<Form.Group controlId="hotelAddress1" className="mb-3">
 						<Form.Label className="mb-0">Hotel Address Line 1</Form.Label>
-						<Form.Control onBlur={handleFormData} name="hotelAddress1" type="text" required />
+						<Form.Control onBlur={handleFormData} name="hotel.street1" type="text" required />
 						<Form.Control.Feedback type="invalid">Please add a valid address!</Form.Control.Feedback>
 					</Form.Group>
 					<Form.Group controlId="hotelAddress2" className="mb-3">
 						<Form.Label className="mb-0">Hotel Address Line 2</Form.Label>
-						<Form.Control onBlur={handleFormData} name="hotelAddress2" placeholder="(not quite fancy enough for a line 2)" type="text" />
+						<Form.Control onBlur={handleFormData} name="hotel.street2" placeholder="(not quite fancy enough for a line 2)" type="text" />
 					</Form.Group>
 					<Row>
 						<Form.Group as={Col} md="6" controlId="hotelCity" className="mb-3">
 							<Form.Label className="mb-0">Hotel City</Form.Label>
-							<Form.Control onBlur={handleFormData} name="hotelCity" type="text" placeholder="San Fancysco" required />
+							<Form.Control onBlur={handleFormData} name="hotel.city" type="text" placeholder="San Fancysco" required />
 							<Form.Control.Feedback type="invalid">
 								Please provide a valid city.
 							</Form.Control.Feedback>
 						</Form.Group>
 						<Form.Group as={Col} md="3" controlId="hotelState" className="mb-3">
 							<Form.Label className="mb-0">Hotel State</Form.Label>
-							<Form.Control onBlur={handleFormData} name="hotelState" type="text" placeholder="Fancylvania" required />
+							<Form.Control onBlur={handleFormData} name="hotel.state" type="text" placeholder="Fancylvania" required />
 							<Form.Control.Feedback type="invalid">
 								Please provide a valid state.
 							</Form.Control.Feedback>
 						</Form.Group>
 						<Form.Group as={Col} md="3" controlId="hotelZip" className="mb-3">
 							<Form.Label className="mb-0">Hotel Zip</Form.Label>
-							<Form.Control onBlur={handleFormData} name="hotelZip" type="text" placeholder="77777" required />
+							<Form.Control onBlur={handleFormData} name="hotel.zip" type="text" placeholder="77777" required />
 							<Form.Control.Feedback type="invalid">
 								Please provide a valid zip.
 							</Form.Control.Feedback>
@@ -103,11 +103,11 @@ function ReservationPage2(props) {
           <Row>
             <Form.Group as={Col} md="6" controlId="date-time" className="mb-3">
               <Form.Label className="mb-0">Desired Checkin Date/Time</Form.Label>
-              <DateTimePickerComponent onBlur={handleFormData} name="checkinDate" id="date" placeholder="We suggest 1 hour before your arrival" required/>
+              <DateTimePickerComponent onBlur={handleFormData} name="checkIn" id="date" placeholder="We suggest 1 hour before your arrival" required/>
             </Form.Group>
             <Form.Group as={Col} md="6" controlId="reservationNumber" className="mb-3">
 					  	<Form.Label className="mb-0">Hotel Reservation #</Form.Label>
-						  <Form.Control onBlur={handleFormData} name="reservationNumber" placeholder="Find this on your booking confirmation!" type="text" required/>
+						  <Form.Control onBlur={handleFormData} name="confirmationKey" placeholder="Find this on your booking confirmation!" type="text" required/>
 	          </Form.Group>
           </Row>
           <Row>

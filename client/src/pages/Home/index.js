@@ -10,13 +10,7 @@ function Home () {
         <Col className="min-height">
           <Image className="main-logo" src="./assets/images/happycheckin-full3.png" fluid></Image>
           <Button className="home-start-btn" href= "./login">Get Started!</Button>
-          <h2>Here's How It Works</h2>
-          </Col>
-      </Row>
-      <Row className="step-1 min-height">
-        <Col className="">
-          <Image className="main-logo" src="./assets/images/happycheckin-full3.png" fluid></Image>
-          <Button className="home-start-btn" href= "./login">Get Started!</Button>
+          <h2>1. SIGN UP     |      2. SET UP YOUR OPTIONS     |     3. WE CHECK YOU IN!</h2>
           </Col>
       </Row>
     </Container>
