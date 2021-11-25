@@ -34,8 +34,10 @@ function AddReservation() {
   const [hotelData, setHotelData] = useState(blankHotel);
 
   const [packageData, setPackageData] = useState({
-    name: '',
-    price: ''
+    title: '',
+    imageUrl: '',
+    cost: 0,
+    description: ''
   })
 
   function nextPage() {
