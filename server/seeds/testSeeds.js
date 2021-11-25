@@ -7,6 +7,7 @@ db.once('open', async () => {
   await User.deleteMany();
 
   const customer1 = await User.create({
+    role: 0,
     firstName: 'Steven',
     lastName: 'Gerrard',
     phoneNumber: '8791532345',
@@ -14,6 +15,7 @@ db.once('open', async () => {
   });
 
   const customer2 = await User.create({
+    role: 0,
     firstName: 'Lionel',
     lastName: 'Messi',
     phoneNumber: '9999999999',
@@ -21,6 +23,7 @@ db.once('open', async () => {
   });
 
   const customer3 = await User.create({
+    role: 0,
     firstName: 'Harry',
     lastName: 'Kane',
     phoneNumber: '2222222222',
@@ -28,6 +31,7 @@ db.once('open', async () => {
   });
 
   const checker1 = await User.create({
+    role: 1,
     firstName: 'Riyad',
     lastName: 'Mahrez',
     phoneNumber: '3333333333',
@@ -35,6 +39,7 @@ db.once('open', async () => {
   });
 
   const checker2 = await User.create({
+    role: 1,
     firstName: 'Virgil',
     lastName: 'Van Dijk',
     phoneNumber: '4444444444',
@@ -42,6 +47,7 @@ db.once('open', async () => {
   });
 
   const checker3 = await User.create({
+    role: 1,
     firstName: 'Andy',
     lastName: 'Robertson',
     phoneNumber: '5555555555',

@@ -33,6 +33,7 @@ const resolvers = {
     allReservations: async () => { // successful
       return await Reservation.find({})
         .populate('customer')
+        .populate('checker');
     },
     checkoutSession: async (parent, args, context) => {
       const session = await createCheckoutSession(args.productName, args.unitAmount, args.quantity, context.headers.origin);
