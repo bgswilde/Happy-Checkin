@@ -9,7 +9,7 @@ Happy Checkin lets you enjoy a care free process and allows you to arrive at you
 
 ## Installation
 Please refer to the [Contribution Guide](#contribution), but once those steps are completed simply navigate to the root of the directory and run:
-```
+```bash
 npm install
 ```
 This will install all dependencies.  Look at the [Badges](#badges) section to see a more detailed list of the dependencies
@@ -30,22 +30,22 @@ This will install all dependencies.  Look at the [Badges](#badges) section to se
 [Will K Github Profile](https://github.com/wfknowles)
 
 ## License
-[MIT](https://choosealicense.com/licenses/mit/)
+[MIT](https://choosealicense.com/licenses/mit/)</br>
 The DateTimePicker in the reservation form was from a library provided by Syncfusion incorporated used under the community license:  (c) 2021 Syncfusion, Inc. All rights reserved ![syncfusion](https://img.shields.io/badge/License-Syncfusion-ff8400)
 
 ## Contribution
 ![GitHub branch checks state](https://img.shields.io/github/checks-status/bgswilde/Happy-Checkin/main?color=orange&style=plastic)
 
 If any contributions are to be made simply clone the repo to your machine
-```
+```bash
 git clone git@github.com:bgswilde/Happy-Checkin.git
 ```
 wherever you want the root directory to be stored and navigate to a feature branch:
-```
+```bash
 git checkout -b feature/<some feature branch name>
 ```
 once completed add, commit, and push your branch to the repo to be reviewed! 😄
-```
+```bash
 git add <filename changes were made to>
 git commit -m "<description on what was changed>"
 git push origin feature/<branch name you are working in>
