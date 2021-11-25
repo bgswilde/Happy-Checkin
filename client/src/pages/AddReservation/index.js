@@ -8,22 +8,27 @@ import ReservationPage3 from '../../components/ReservationPage3';
 
 function AddReservation() {
   const blankHotel = {
-    hotelName: '',
-    hotelAddress1: '',
-    hotelCity: '',
-    hotelState: '',
-    hotelZip: '',
-    checkinDate: '',
+    customerId: "",
+    hotel: {
+      name: "",
+      street1: "",
+      street2: "",
+      city: "",
+      state: "",
+      zip: ""
+    },
     options: [],
-    instructions: ''
+    instructions: "",
+    checkIn: "",
+    confirmationKey: ""
   };
 
   const [page, setPage] = useState(1);
   
   const [userData, setUserData] = useState({
     _id: '', 
-    email: '',
-    username: '', 
+    phone: '',
+    displayName: '', 
   });
 
   const [hotelData, setHotelData] = useState(blankHotel);

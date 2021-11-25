@@ -3,8 +3,8 @@ import {
   Row, 
   Col, 
   Container, 
-  Button
 } from 'react-bootstrap';
+import Stripe from '../Stripe';
 import './index.css'
 
 function ReservationPage3(props) {
@@ -67,7 +67,7 @@ function ReservationPage3(props) {
 
               <Row className="justify-content-center">
                 <Col sm="9" md="6" xl="4">
-                  <Button className="submit-btn" type="submit">Looks Good! Take Me To Payment!</Button>
+                  <Stripe product_name={`${packageData.name}`} unit_amount={`${packageData.price}00`} quantity={1} />
                 </Col>
               </Row>
             </Col>

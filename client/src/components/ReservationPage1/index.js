@@ -14,13 +14,40 @@ function ReservationPage1(props) {
   const { setPackageData, nextPage } = props; 
 
   function handleChoice(selection) {
+    const packages = [
+      {
+        title: "Basic",
+        imageUrl: "http://example.com/someimage.jpg",
+        cost: 20,
+        description: "Lorem ipsum dolar sit amet"
+      },
+      {
+        title: "Sweet Stay",
+        imageUrl: "http://example.com/someimage.jpg",
+        cost: 35,
+        description: "Lorem ipsum dolar sit amet"
+      },
+      {
+        title: "Charcuteriec",
+        imageUrl: "http://example.com/someimage.jpg",
+        cost: 70,
+        description: "Lorem ipsum dolar sit amet"
+      },
+      {
+        title: "Honeymoon",
+        imageUrl: "http://example.com/someimage.jpg",
+        cost: 100,
+        description: "Lorem ipsum dolar sit amet"
+      }
+    ]
     console.log(`I clicked the button to select option ${selection}`);
     // useMutation for getting the package data for name and price
     // selection as the data is just to see if the prop works for now
-    setPackageData({
-      name: selection,
-      price: selection
-    });
+      var name = packages[selection - 1].name;
+      var price = packages[selection - 1].price;
+
+    setPackageData({name, price});
+
     nextPage();
   }
 

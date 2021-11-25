@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Button } from 'react-bootstrap';
 import { loadStripe } from '@stripe/stripe-js';
 import { QUERY_CONFIG, QUERY_CHECKOUT_SESSION } from "../../utils/queries";
 import { useLazyQuery, useQuery } from '@apollo/client';
@@ -12,6 +13,7 @@ import './index.css'
 
 const Stripe = (props) => {
   // stripe public key from graphql
+  console.log(props);
   const { data: configData } = useQuery(QUERY_CONFIG);
   
   // create checkout session via graphql
@@ -41,7 +43,7 @@ const Stripe = (props) => {
   }
 
   return (
-    <button onClick={submitCheckout}>Checkout</button>
+    <Button className="submit-btn" type="submit" onClick={submitCheckout}>Looks Good! Take Me To Payment!</Button>
   )
 
 };
