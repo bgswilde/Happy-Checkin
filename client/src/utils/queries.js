@@ -64,7 +64,7 @@ query ($userId: String!){
 
 export const QUERY_ALL_RESERVATIONS = gql`
 query {
-    reservations {
+    allReservations {
       _id
       createdAt
       claimedAt
@@ -75,6 +75,10 @@ query {
           description
           imageUrl
           title
+      }
+      checker {
+        _id
+        displayName
       }
       customer {
         displayName

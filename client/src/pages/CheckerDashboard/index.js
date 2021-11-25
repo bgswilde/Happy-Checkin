@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { QUERY_ALL_RESERVATIONS } from "../../utils/queries";
+import { QUERY_ALL_RESERVATIONS, QUERY_RESERVATIONS } from "../../utils/queries";
 import { useQuery } from '@apollo/client';
 import { Container, Row, Col } from 'react-bootstrap';
 import DashboardExplainerChecker from '../../components/DashboardExplainerChecker';
@@ -8,23 +8,38 @@ import Auth from '../../utils/auth';
 import './index.css'
 
 function CheckerDashboard () {
+  const myReservations = useRef();
   const unclaimedReservations = useRef();
-  const completeReservations = useRef();
-  const { loading: reservationsLoading, data: reservationData } = useQuery(QUERY_ALL_RESERVATIONS, {});
+  const { loading: checkerLoading, data: checkerData } = useQuery(QUERY_ALL_RESERVATIONS);
 
   const displayName = Auth.getDisplayName();
 
-  if (!reservationsLoading && reservationData?.reservations) {
-    unclaimedReservations.current = reservationData.reservations.filter(r => r.checker._id !== undefined);
-    completeReservations.current = reservationData.reservations.filter(r => r.status === 'completed');
+  if (!checkerLoading && checkerData?.allReservations) {
+    console.log('checkerData.allReservations', checkerData.allReservations)
+    unclaimedReservations.current = checkerData.allReservations.filter(r => !r.checker);
+    myReservations.current = checkerData.allReservations.filter(r => {
+      if (r.checker) {
+        if (r.checker._id == Auth.getID()) {
+          return true;
+        }
+      }
+      return false;
+    });
   }
 
   useEffect(()=> {
-    if (!reservationsLoading && reservationData?.reservations) {
-      unclaimedReservations.current = reservationData.reservations.filter(r => r.checker._id !== undefined);
-      completeReservations.current = reservationData.reservations.filter(r => r.status === 'completed');
+    if (!checkerLoading && checkerData?.allReservations) {
+      unclaimedReservations.current = checkerData.allReservations.filter(r => !r.checker);
+      myReservations.current = checkerData.allReservations.filter(r => {
+        if (r.checker) {
+          if (r.checker._id == Auth.getID()) {
+            return true;
+          }
+        }
+        return false;
+      });
     }
-  }, [reservationData])
+  }, [checkerData])
   
   return (
     <Container className="dashboard reservation">
@@ -36,10 +51,10 @@ function CheckerDashboard () {
       <DashboardExplainerChecker />
       <Row>
         <Col md="6">
-          <ReservationList title="Active Reservations" reservations={unclaimedReservations.current} klass="active-list"/>
+          <ReservationList title="Claimed Reservations" reservations={myReservations.current} klass="active-list"/>
         </Col>
         <Col md="6">
-          <ReservationList title="Reservation History" reservations={completeReservations.current} klass="completed-list"/>
+          <ReservationList title="Unclaimed Reservations" reservations={unclaimedReservations.current} klass="completed-list"/>
         </Col>
       </Row>
     </Container>
