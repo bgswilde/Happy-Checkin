@@ -6,6 +6,9 @@ function Header() {
   function logout() {
     Auth.logout();
   }
+
+  console.log(Auth.loggedIn());
+
   return (
     <Navbar 
       bg="dark"
@@ -26,11 +29,18 @@ function Header() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             {/* To be rendered if not logged in */}
-            <Nav.Link href="/login" color="light">Log In</Nav.Link>
-            <Nav.Link href="/signup">Sign Up</Nav.Link>
+            {!Auth.loggedIn() ? (
+              <>
+                <Nav.Link href="/login" color="light">Log In</Nav.Link>
+                <Nav.Link href="/signup">Sign Up</Nav.Link>
+              </>
+            ) : (
+              <>
+              <Nav.Link href="/reservation">Reservations</Nav.Link>
+              <Nav.Link onClick={logout}>Logout</Nav.Link>
+              </>
+            )}
             {/* To be rendered if logged in */}
-            <Nav.Link href="/reservation">Reservations</Nav.Link>
-            <Nav.Link onClick={logout}>Logout</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
