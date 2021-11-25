@@ -31,6 +31,7 @@ This will install all dependencies.  Look at the [Badges](#badges) section to se
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
+The DateTimePicker in the reservation form was from a library provided by Syncfusion incorporated used under the community license:  (c) 2021 Syncfusion, Inc. All rights reserved ![syncfusion](https://img.shields.io/badge/License-Syncfusion-ff8400)
 
 ## Contribution
 ![GitHub branch checks state](https://img.shields.io/github/checks-status/bgswilde/Happy-Checkin/main?color=orange&style=plastic)
