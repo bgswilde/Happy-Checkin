@@ -44,9 +44,9 @@ This app is used as a demonstration of a MERN application with a responsive fron
 ### Deployed Link and Screenshots:
 [happy-checkin.herokuapp.com](https://happy-checkin.herokuapp.com)
 
-![Screenshot1](screenshots/hapycheckin1.png)
-![Screenshot1](screenshots/hapycheckin2.png)
-![Screenshot1](screenshots/hapycheckin3.png)
+![Screenshot1](screenshots/happycheckin1.png)
+![Screenshot1](screenshots/happycheckin2.png)
+![Screenshot1](screenshots/happycheckin3.png)
 
 ## Owners
 This application was created in a team project setting, with the following Brians and Wills working in tandem:
