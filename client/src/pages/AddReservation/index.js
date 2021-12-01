@@ -7,8 +7,20 @@ import ReservationPage3 from '../../components/ReservationPage3';
 
 
 function AddReservation() {
-  const blankHotel = {
+
+  const [page, setPage] = useState(1);
+  
+  const [userData, setUserData] = useState({
+    _id: '', 
+    phone: '',
+    displayName: '', 
+  });
+
+  const [newReservation, setNewReservation] = useState({
     customerId: "",
+    checkerId: "",
+    checkIn: "",
+    confirmationKey: "",
     hotel: {
       name: "",
       street1: "",
@@ -19,19 +31,9 @@ function AddReservation() {
     },
     options: [],
     instructions: "",
-    checkIn: "",
-    confirmationKey: ""
-  };
 
-  const [page, setPage] = useState(1);
-  
-  const [userData, setUserData] = useState({
-    _id: '', 
-    phone: '',
-    displayName: '', 
+    
   });
-
-  const [hotelData, setHotelData] = useState(blankHotel);
 
   const [packageData, setPackageData] = useState({
     title: '',

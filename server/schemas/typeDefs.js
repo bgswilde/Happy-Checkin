@@ -12,19 +12,18 @@ const typeDefs = gql`
 
   type Reservation {
     _id: ID
-    customerId: String
-    checkerId: String
     createdAt: String
     claimedAt: String
     completedAt: String
-    checkIn: String
-    instructions: String
     customer: User
     checker: User
     package: Package
     hotel: Hotel
     feedback: Feedback
-    status: String
+    checkInTime: String
+    confirmationKey: String
+    instructions: String
+    options: Option
   }
 
   type Package {
@@ -49,6 +48,14 @@ const typeDefs = gql`
     _id: ID
     rating: Int
     body: String
+  }
+
+  type Option {
+    towels: Boolean
+    pillows: Boolean
+    down: Boolean
+    rollaway: Boolean
+    ice: Boolean
   }
 
   type Auth {
@@ -81,6 +88,7 @@ const typeDefs = gql`
     updateUser(role: Int, phoneNumber: String, firstName: String, lastName: String, password: String): Auth
     removeUser(userId: ID): User
     
+    newReservation(checkInTime)
     addReservation(userId: ID!, checkIn: String!, confirmationKey: String!, name: String!, street1: String!, street2: String, city: String!, state: String!, zip: Int!, title: String!, imageUrl: String!, cost: Int!, description: String ): Reservation
     updateReservation(jobId: ID!, checkIn: String, claimedAt: String, completedAt: String, confirmationKey: String, instructions: String ): Reservation
     removeReservation(jobId: ID!): Reservation

@@ -8,8 +8,8 @@ import Auth from '../../utils/auth';
 import './index.css'
 
 function CustomerDashboard () {
-  const activeReservations = useRef();
-  const completeReservations = useRef();
+  const activeReservations = useRef(); // using refs wrong
+  const completeReservations = useRef(); // using refs wrong
   const { loading: customerLoading, data: customerData } = useQuery(QUERY_RESERVATIONS, {
     variables: {
       userId: Auth.getID()

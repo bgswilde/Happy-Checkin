@@ -1,19 +1,15 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
 const { Schema, Types } = mongoose;
 const FeedbackSchema = require('./Feedback');
 const PackageSchema = require('./Package');
 const HotelSchema = require('./Hotel');
+const OptionSchema = require('./Option');
+
 const { dateFormater } = require('../utils/dateFormat');
 
 const ReservationSchema = new Schema(
   { 
-    customerId: {
-        type: String
-    },
-    checkerId: {
-        type: String
-    },
     createdAt: {
         type: Date,
         default: Date.now,
@@ -39,17 +35,19 @@ const ReservationSchema = new Schema(
     hotel: HotelSchema,
     feedback: FeedbackSchema,
 
-    checkIn: {
-        type: String
+    checkInTime: {
+        type: String,
+        required: true
     },
     confirmationKey: {
-        type: String
+        type: String,
+        required: true
     },
     instructions: {
         type: String,
         minlength: 1
     },
-    options: []
+    options: OptionSchema
 
   },
   {
