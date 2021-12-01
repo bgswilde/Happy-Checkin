@@ -81,6 +81,41 @@ const typeDefs = gql`
     config: Config
   }
 
+  input reservationInput {
+    checkInTime: String!
+    confirmationKey: String!
+    instructions: String
+    customer: ID!
+    checker: ID
+    hotel: HotelInput!
+    package: PackageInput!
+    options: OptionsInput!
+  }
+
+  input HotelInput {
+    name: String!
+    street1: String!
+    street2: String
+    city: String!
+    state: String!
+    zip: String!
+  }
+
+  input PackageInput {
+    title: String!
+    imageUrl: String!
+    cost: Int!
+    description: String
+  }
+
+  input OptionsInput {
+    towels: Boolean
+    pillows: Boolean
+    down: Boolean
+    rollaway: Boolean
+    ice: Boolean
+  }
+
   type Mutation {
     login(phoneNumber: String!, password: String!): Auth
 
@@ -88,8 +123,7 @@ const typeDefs = gql`
     updateUser(role: Int, phoneNumber: String, firstName: String, lastName: String, password: String): Auth
     removeUser(userId: ID): User
     
-    newReservation(checkInTime: String!, customer: User!, checker: User!, hotel: Hotel!, package: Package!, options: Option!)
-    addReservation(userId: ID!, checkIn: String!, confirmationKey: String!, name: String!, street1: String!, street2: String, city: String!, state: String!, zip: Int!, title: String!, imageUrl: String!, cost: Int!, description: String ): Reservation
+    addReservation(reservation: reservationInput): Reservation
     updateReservation(jobId: ID!, checkIn: String, claimedAt: String, completedAt: String, confirmationKey: String, instructions: String ): Reservation
     removeReservation(jobId: ID!): Reservation
     

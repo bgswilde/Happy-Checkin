@@ -44,31 +44,52 @@ export const UPDATE_USER = gql`
     }
 `
 
-export const ADD_JOB = gql`
-    mutation($userId: ID!, $checkIn: String!, $confirmationKey: String!, $name: String!, $street1: String!, $city: String!, $state: String!, $zip: Int!, $title: String!, $imageUrl: String!, $cost: Int!) {
-        addJob(userId: $userId, checkIn: $checkIn, confirmationKey: $confirmationKey, name: $name, street1: $street1, city: $city, state: $state, zip: $zip, title: $title, imageUrl: $imageUrl, cost: $cost) {
-            createdAt
-            checkIn
-            package{
-                cost
-                imageUrl
-                title
-                description
-            }
-            hotel {
-                _id
-                street1
-                street2
-                city
-                state
-                zip
-            }
-            customer {
-                _id
-                displayName
-            }
-        }
+export const ADD_RESERVATION = gql`
+mutation ($reservation: reservationInput) {
+    addReservation(reservation: $reservation) {
+      _id
+      createdAt
+      claimedAt
+      completedAt
+      customer {
+        _id
+        phoneNumber
+        displayName
+      }
+      checker {
+        _id
+        phoneNumber
+        displayName
+      }
+      package {
+        title
+        imageUrl
+        cost
+        description
+      }
+      hotel {
+        name
+        street1
+        street2
+        city
+        state
+        zip
+      }
+      feedback {
+        _id
+      }
+      checkInTime
+      confirmationKey
+      instructions
+      options {
+        towels
+        pillows
+        down
+        rollaway
+        ice
+      }
     }
+  }
 `
 
 export const UPDATE_JOB = gql`

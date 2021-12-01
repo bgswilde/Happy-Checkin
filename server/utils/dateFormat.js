@@ -55,6 +55,11 @@ const hourFormat = (hour) => {
 
 //convert timestamp to formatted date string
 const dateFormater = (timestamp) => {
+
+    // dont format undefined timestamps!
+    if (timestamp == undefined) {
+        return timestamp;
+    }
     
     const dateObj = new Date(timestamp);
     const monthStr = monthFormat(dateObj.getMonth());

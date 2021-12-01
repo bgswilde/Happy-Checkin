@@ -95,25 +95,12 @@ const resolvers = {
 
       throw new AuthenticationError('You need to be logged in!')
     },
-    addReservation: async (parent, args, context) => { // tested successfully -BK
-      if (context.user) {
-        const reservation = await Reservation.create({...args, customer: args.userId})
-        const reservationPlusCustomer = Reservation.findOneAndUpdate( 
-          { _id: reservation.id } ,
-          { $push: { customer: args.userId }})
-          .populate('customer');
-        const reservationPlusPackage = await Reservation.findOneAndUpdate(
-          { _id: reservation.id },
-          { $push: { package: {title: args.title, imageUrl: args.imageUrl, cost: args.cost, description: args.description }}}
-        );
-        const updatedReservation = await Reservation.findOneAndUpdate(
-          { _id: Reservation.id },
-          { $push: { hotel: {name: args.name, street1: args.street1, city: args.city, state: args.state, zip: args.zip }}}
-        ).populate('customer');
-        return updatedReservation;
-      }
-
-      throw new AuthenticationError('You need to be logged in!');
+    addReservation: async (parent, args, contect) => {
+      const { reservation } = args;
+      let reservationData = await Reservation.create(reservation);
+      reservationData = await reservationData.populate('customer').populate('checker').execPopulate();
+      return reservationData;
+      
     },
     updateReservation: async (parent, args, context) => { // tested successfully -BK
       if (context.user) {

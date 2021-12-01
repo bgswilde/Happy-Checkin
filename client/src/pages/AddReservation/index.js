@@ -16,7 +16,7 @@ function AddReservation() {
     displayName: '', 
   });
 
-  const [newReservation, setNewReservation] = useState({
+  const [addReservation, setAddReservation] = useState({
     customerId: "",
     checkerId: "",
     checkIn: "",
@@ -31,9 +31,67 @@ function AddReservation() {
     },
     options: [],
     instructions: "",
-
-    
   });
+
+  // Here is my thought...
+  //
+  // If you update addReservation to match an empty object that matches the data architecture below,
+  // we can then pass addReservation and setAddReservation into each ReservationPage. On the submission
+  // of each ReservationPage (until the last one...), update state with the new information and advance
+  // to the next ReservationPage. On the last ReservationPage, include and useMutation(ADD_MUTATION) 
+  // when you are ready to save the reservation. Your form inputs will need to be updated to use the 
+  // current data architecture:
+  //    On the form elements that are related to hotel, you'll set name as follows:
+  //            name="hotel[name]"... 
+  //    On the form elements related to package, you'll need to set name as follows:
+  //            name="package[title]"... 
+  //    On the form elements related to customer, you'll need to set name as follows:
+  //            name="customer[_id]"...
+  //    On form elements that dont contain a mongoose schema, you can set name as follows:
+  //            name="checkInTime"
+  // When you submit each component, you can then use the same handleSubmit pattern as it relates to 
+  // updating state. Something you may want to consider is creating a form input component to use on each
+  // ReservationPage. Each Form.Group is dangerously the same... so much so that you could pass in props 
+  // from the ReservationPage. This creates two benefits: Your ReservationPage is easier to read AND most
+  // appropriately, the input component can handle updating state as each input's change (or blur).
+  // Going that route also allows us to remove any state handling in the ReservationPages. Making 
+  // AddReservation where the state is initiated and then each ReservationPage is simply a component 
+  // that's only managing how we display the information.
+  // 
+  // 
+
+  // STATE NEEDS TO MATCH THE reservation DATA ARCHITECTURE
+  // 
+  // "reservation": {
+  //   "checkInTime": "Dec 12, 2021",
+  //   "confirmationKey": "qeramcaii1119un",
+  //   "instructions": "Lorem ipsum dolar sit amet",
+  //   "customer": {
+  //     "_id": "619ed34b68fc535812c93b85"
+  //   },
+  //   "checker": null,
+  //   "package": {
+  //     "title": "package",
+  //     "imageUrl": "http://example.com/image.jpg",
+  //     "cost": 2000,
+  //     "description": "product description"
+  //   },
+  //   "hotel": {
+  //     "name": "Sample Hotel",
+  //     "street1": "123 Hotel Way",
+  //     "street2": "",
+  //     "city": "Kansas City",
+  //     "state": "KS",
+  //     "zip": "66062"
+  //   },
+  //   "options": {
+  //     "towels": true,
+  //     "pillows": true,
+  //     "down": false,
+  //     "rollaway": false,
+  //     "ice": true
+  //   }
+  // }
 
   const [packageData, setPackageData] = useState({
     title: '',
