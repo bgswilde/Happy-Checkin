@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import './index.css'
+import './index.css';
+import Auth from '../../utils/auth';
 import { Container, Button, Row, Col, ProgressBar } from 'react-bootstrap';
 import ReservationPage1 from '../../components/ReservationPage1';
 import ReservationPage2 from '../../components/ReservationPage2';
@@ -9,29 +10,51 @@ import ReservationPage3 from '../../components/ReservationPage3';
 function AddReservation() {
 
   const [page, setPage] = useState(1);
+  const newReservation = {
+      checkInTime: "",
+      confirmationKey : "",
+      instructions: "",
+      customer: {
+        _id: Auth.getID()
+      },
+      checker: "",
+      package: {
+        title: "",
+        imageUrl: "",
+        cost: "",
+        description: ""
+      },
+      hotel: {
+        name: "",
+        street1: "",
+        street2: "",
+        city: "",
+        state: "",
+        zip: ""
+      },
+      options: {
+        towels: "",
+        pillows: "",
+        down: "",
+        rollaway: "",
+        ice: ""
+      }
+  }
+  const [reservation, setReservation] = useState(newReservation);
   
-  const [userData, setUserData] = useState({
-    _id: '', 
-    phone: '',
-    displayName: '', 
-  });
+ 
+  const changeHandler = (data) => {
+    console.log('changeHandler', data);
+    setReservation({
+      ...reservation,
+      ...data
+    })
+  }
 
-  const [addReservation, setAddReservation] = useState({
-    customerId: "",
-    checkerId: "",
-    checkIn: "",
-    confirmationKey: "",
-    hotel: {
-      name: "",
-      street1: "",
-      street2: "",
-      city: "",
-      state: "",
-      zip: ""
-    },
-    options: [],
-    instructions: "",
-  });
+ 
+
+  
+  console.log({reservation})
 
   // Here is my thought...
   //
@@ -93,12 +116,12 @@ function AddReservation() {
   //   }
   // }
 
-  const [packageData, setPackageData] = useState({
-    title: '',
-    imageUrl: '',
-    cost: 0,
-    description: ''
-  })
+  // const [packageData, setPackageData] = useState({
+  //   title: '',
+  //   imageUrl: '',
+  //   cost: 0,
+  //   description: ''
+  // })
 
   function nextPage() {
     if (page === 3) return;
@@ -110,7 +133,7 @@ function AddReservation() {
   }
 
   function goBackHotel() {
-    setHotelData(blankHotel);
+    // setHotelData(newReservation);
     goBack();
   }
 
@@ -118,9 +141,8 @@ function AddReservation() {
   // to be executed upon submit payment button on page 4
 
   console.log(`the current page is ${page}`);
-  console.log(`the current package selection information is ${JSON.stringify(packageData)}`);
-  console.log(`the current hotel data information is ${JSON.stringify(hotelData)}`);
-  console.log(`the current user data is ${JSON.stringify(userData)}`);
+  // console.log(`the current package selection information is ${JSON.stringify(packageData)}`);
+  // console.log(`the current hotel data information is ${JSON.stringify(hotelData)}`);
 
   return (
     <Container>
@@ -136,21 +158,27 @@ function AddReservation() {
       </Row>
         {page === 1 && 
           <ReservationPage1 
-            setPackageData={setPackageData}
-            nextPage={nextPage}
+            reservation={reservation}
+            change={changeHandler}
+            // setPackageData={setPackageData}
+            next={nextPage}
           />
         }
         {page === 2 && 
           <ReservationPage2 
-            setHotelData={setHotelData}
-            hotelData={hotelData}
-            nextPage={nextPage}
+            reservation={reservation}
+            change={changeHandler}
+            // setReservationData={setReservationData}
+            // reservationData={reservationData}
+            next={nextPage}
           />
         }
         {page === 3 && 
           <ReservationPage3 
-            hotelData={hotelData}
-            packageData={packageData}
+            reservation={reservation}
+            change={changeHandler}
+            // reservationData={reservationData}
+            // packageData={packageData}
           />}
         {(page === 2 || page === 4) && 
           <Button className="next-btn" onClick={goBack}>Go Back</Button>
