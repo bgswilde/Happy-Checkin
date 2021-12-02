@@ -1,52 +1,52 @@
-//    FormHandler by Will Knowles
-//
-//    Library for handling React form data. This library recreates jQueries ability to support
-//    nested form data.
-//
-//    
-//    Sample Component & Library Usage:
-//    
-//    import React, { useState } from 'react'
-//    import FormHandler from 'FormHandler.js'
-//
-//    const [ formData, setFormData ] = useState({});
-//
-//    const changeHandler = (e) {
-//      const [key, value] = FormHandler.parseInput(e.target);
-//      const updatedFormData = FormHandler.reduceState(formData, key, value);
-//
-//      if (updatedFormData) {
-//        setFormData({...updatedFormData});
-//      }
-//    }
-//    
-//    const submitHandler = (e) {
-//      // send formData to your endpoint
-//
-//      // below form submission would return formData as follows:
-//      //
-//      // formData = {
-//      //    wine: inputValue,
-//      //    beer: inputValue,
-//      //    pizza: {
-//      //      cheese: inputValue,
-//      //      pepperoni: inputValue,
-//      //      supreme: inputValue,
-//      //    }
-//      //  }
-//    }
-//    
-//    return (
-//      <form onSubmit={submitHandler}>
-//        <input name="wine" onChange={changeHandler}/>
-//        <input name="beer" onChange={changeHandler}/>
-//        <input name="pizza.cheese" onChange={changeHandler}/>
-//        <input name="pizza.pepperoni" onChange={changeHandler}/>
-//        <input name="pizza.supreme" onChange={changeHandler}/>
-//      </form>
-//    )
-//
-//
+/*
+   FormHandler by Will Knowles
+
+   Library for handling React form data. This library recreates jQueries ability to support
+   nested form data.
+
+   
+   Sample Component & Library Usage:
+   
+   import React, { useState } from 'react'
+   import FormHandler from 'FormHandler.js'
+
+   const [ formData, setFormData ] = useState({});
+
+   const changeHandler = (e) {
+     const [key, value] = FormHandler.parseInput(e.target);
+     const updatedFormData = FormHandler.reduceState(formData, key, value);
+
+     if (updatedFormData) {
+       setFormData({...updatedFormData});
+     }
+   }
+   
+   const submitHandler = (e) {
+     // send formData to your endpoint
+
+     // below form submission would return formData as follows:
+     //
+     // formData = {
+     //    wine: inputValue,
+     //    beer: inputValue,
+     //    pizza: {
+     //      cheese: inputValue,
+     //      pepperoni: inputValue,
+     //      supreme: inputValue,
+     //    }
+     //  }
+   }
+   
+   return (
+     <form onSubmit={submitHandler}>
+       <input name="wine" onChange={changeHandler}/>
+       <input name="beer" onChange={changeHandler}/>
+       <input name="pizza.cheese" onChange={changeHandler}/>
+       <input name="pizza.pepperoni" onChange={changeHandler}/>
+       <input name="pizza.supreme" onChange={changeHandler}/>
+     </form>
+   )
+*/
 class FormHandler {
 
     // parse event handler's event.target and return formatted data.
