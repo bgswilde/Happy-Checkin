@@ -10,52 +10,55 @@ import {
   Button 
 } from 'react-bootstrap';
 
-function ReservationPage1(props) {
-  const { setPackageData, nextPage } = props; 
-
+function ReservationPage1({reservation, change, next}) {
+  const packages = [
+    {
+      title: "Basic",
+      imageUrl: "http://example.com/someimage.jpg",
+      cost: 20,
+      description: "Lorem ipsum dolar sit amet"
+    },
+    {
+      title: "Sweet Stay",
+      imageUrl: "http://example.com/someimage.jpg",
+      cost: 35,
+      description: "Lorem ipsum dolar sit amet"
+    },
+    {
+      title: "Charcuteriec",
+      imageUrl: "http://example.com/someimage.jpg",
+      cost: 70,
+      description: "Lorem ipsum dolar sit amet"
+    },
+    {
+      title: "Honeymoon",
+      imageUrl: "http://example.com/someimage.jpg",
+      cost: 100,
+      description: "Lorem ipsum dolar sit amet"
+    }
+  ];
   function handleChoice(selection) {
-    const packages = [
-      {
-        title: "Basic",
-        imageUrl: "http://example.com/someimage.jpg",
-        cost: 20,
-        description: "Lorem ipsum dolar sit amet"
-      },
-      {
-        title: "Sweet Stay",
-        imageUrl: "http://example.com/someimage.jpg",
-        cost: 35,
-        description: "Lorem ipsum dolar sit amet"
-      },
-      {
-        title: "Charcuteriec",
-        imageUrl: "http://example.com/someimage.jpg",
-        cost: 70,
-        description: "Lorem ipsum dolar sit amet"
-      },
-      {
-        title: "Honeymoon",
-        imageUrl: "http://example.com/someimage.jpg",
-        cost: 100,
-        description: "Lorem ipsum dolar sit amet"
-      }
-    ]
+    
     console.log(`I clicked the button to select option ${selection}`);
     // useMutation for getting the package data for name and price
     // selection as the data is just to see if the prop works for now
+
+    const selectedPackage = packages[ selection - 1 ];
+
       var title = packages[selection - 1].title;
       var imageUrl = packages[selection - 1].imageUrl;
       var cost = packages[selection - 1].cost;
       var description = packages[selection - 1].description;
     console.log('setPackageData', {
-      title: title,
-      imageUrl: imageUrl,
-      cost: cost,
-      description: description
+      // title: title,
+      // imageUrl: imageUrl,
+      // cost: cost,
+      // description: description
+      ...selectedPackage
     })
-    setPackageData({title, imageUrl, cost, description});
+    // setPackageData({title, imageUrl, cost, description});
 
-    nextPage();
+    next();
   }
 
   return (
@@ -82,7 +85,7 @@ function ReservationPage1(props) {
                   <li>Special Requests handled and ready</li>
                   <li>Complimentary Happy Checkin Sleep Mask</li>
                 </ul>
-                <Button className="choice-btn choice-1" onClick={() => handleChoice(1)}>Choose This Package</Button>
+                <Button className="choice-btn choice-1" onClick={() => change({package: packages[0]})}>Choose This Package</Button>
               </Col>
             </Row>
           </ListGroupItem>
